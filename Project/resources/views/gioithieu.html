@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="images/icon.jpg" type="image/ico" />
+
+    <title>Admin </title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="css/custom.min.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-ra"></i> <span>SUVI Scientific</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Xin Chào,</span>
+                <h2>John Doe</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>TỔNG QUAN</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-home"></i> Trang Chủ <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="index.html">Trang Chủ</a></li>
+                      <li><a href="trangbao.html">Trang Báo</a></li>
+                      <li><a href="gioithieu.html">Giới Thiệu</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="modotkk.html"><i class="fa fa-edit"></i> Mở Đợt Kê Khai</a></li>
+                  <li><a href="thietlaptl.html"><i class="fa fa-table"></i> Thiết lập thể loại </a></li>
+                  <li><a><i class="fa fa-cogs"></i> Thiết Lập Định Mức<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="dinhmuchh.html"> Định Mức Học Hàm </a></li>
+                      <li><a href="dinhmucmg.html"> Định Mức Miễn Giảm </a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-check-square-o"></i> Xét Duyệt <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="xetduyetmg.html"> Kê Khai Miễn Giảm </a></li>
+                      <li><a href="xetduyethd.html"> Hoạt Động NCKH </a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <h3>QUẢN LÝ</h3>
+                <ul class="nav side-menu">
+                  <li><a href="quanlygv.html"><i class="fa fa-graduation-cap"></i> Giảng Viên </a></li>
+                  <li><a href="quanlyhd.html"><i class="fa fa-paint-brush"></i> Hoạt Động NCKH </a></li>
+                </ul>
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer  buttons  not fix-->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Cài Đặt">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Toàn Màn Hình">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Khóa">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Đăng Xuất" href="dangnhap.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+              <nav class="nav navbar-nav">
+              <ul class=" navbar-right">
+                <li class="nav-item dropdown open" style="padding-left: 15px;">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">John Doe
+                  </a>
+                  <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown" style="margin-top: 15px; width: 100px;">
+                    <a class="dropdown-item"  href="#"> Hồ Sơ</a>
+                    <a class="dropdown-item"  href="dangnhap.html"><i class="fa fa-sign-out pull-right"></i> Đăng Xuất</a>
+                  </div>
+                </li>
+
+                <li role="presentation" class="nav-item dropdown open">
+                  <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">6</span>
+                  </a>
+                  <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <div class="text-center">
+                        <a class="dropdown-item">
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- /page content -->
+
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3> Giới Thiệu </h3>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="x_panel">
+                <div class="col-md-12">
+                  <div class="x_title">
+                    <h2>Giới Thiệu <small> Phòng Quản Lý Khoa Học & Hợp Tác Quốc Tế </small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Settings 1</a>
+                            <a class="dropdown-item" href="#">Settings 2</a>
+                          </div>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <!-- Giới thiệu -->
+                <div class="content text-justify" style="margin: 0 20px; font-size: medium;">
+                  <p>Phòng Quản lý Khoa học và Hợp tác Quốc tế (Office of Science Management and International Affairs) là đơn vị chức năng trực thuộc Ban Giám hiệu trường Đại học SUVI. Phòng hoạt động với vai trò chính là đầu mối thực hiện và quản lý các công tác liên quan đến nghiên cứu khoa học và hợp tác quốc tế của trường.
+
+Phòng được hình thành ngay từ những ngày đầu thành lập trường và trải qua nhiều giai đoạn phát triển khác nhau. Các hoạt động của Phòng có một vai trò quan trọng đối với nhà trường và nhận được nhiều sự quan tâm của lãnh đạo nhà trường.
+
+Phòng Quản lý Khoa học và Hợp tác Quốc tế là đầu mối triển khai và thực hiện các hoạt động nghiên cứu khoa học và hợp tác quốc tế của trường dưới sự chỉ đạo trực tiếp của Ban Giám hiệu.
+                  </p>
+                  Chức năng
+                    <ul type="square">
+                      <li>Tham mưu và tư vấn cho Hiệu trưởng trong tổ chức và triển khai thực hiện các hoạt động khoa học và công nghệ</li>
+                      <li>Xây dựng chiến lược và kế hoạch hoạt động khoa học và công nghệ, sở hữu trí tuệ, đổi mới sáng tạo khởi nghiệp, và hợp tác quốc tế.</li>
+                      <li> Đầu mối tổ chức, quản lý các hoạt động khoa học và công nghệ, sở hữu trí tuệ, đổi mới sáng tạo khởi nghiệp, và hợp tác quốc tế của Trường</li>
+                      <li>Kiểm tra và giám sát thực hiện các hoạt động hoạt động khoa học và công nghệ, sở hữu trí tuệ, đổi mới sáng tạo khởi nghiệp, và hợp tác quốc tế</li>
+                      <li>Cập nhật, cung cấp thông tin, hướng dẫn thực hiện các văn bản quản lý nhiệm vụ khoa học và công nghệ các cấp và xác nhận hoạt động nghiên cứu khoa học</li>
+                      <li>Chịu trách nhiệm công tác thi đua, khen thưởng về khoa học công nghệ và hợp tác quốc tế</li>
+                    </ul>
+                  Nhiệm vụ
+                    <ul type="square">
+                      <li>Quản lý hoạt động khoa học và công nghệ</li>
+                      <li> Hợp tác quốc tế</li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="x_panel">
+                <div class="col-md-12">
+                  <div class="x_title">
+                    <h2>ĐỐI TÁC </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Settings 1</a>
+                            <a class="dropdown-item" href="#">Settings 2</a>
+                          </div>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <!-- Đơn vị hợp tác -->
+                <div class="row green">
+                  <div class="col-md-2 col-sm-2  profile_details" >
+                    <div class="well profile_view">
+                      <div class="col-sm-12 text-center">
+                          <img src="images/auap.PNG" alt="Association of Universities of Asia and the Pacific (AUAP)" class=" img-fluid">
+                          <br/><br/>
+                      </div>
+                      <div class=" profile text-center">
+                        <div class=" col-sm-12 emphasis">
+                          <button type="button" class="btn btn-primary btn-sm">
+                            <a href="http://auap.net/en"><i class="glyphicon glyphicon-home"> </i> Xem Thông Tin</a>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 col-sm-2  profile_details" >
+                    <div class="well profile_view">
+                      <div class="col-sm-12 text-center">
+                          <img src="images/umap.png" alt="University Mobility in Asia and the Pacific (UMAP)" class=" img-fluid">
+                          <br/><br/>
+                      </div>
+                      <div class=" profile text-center">
+                        <div class=" col-sm-12 emphasis">
+                          <button type="button" class="btn btn-primary btn-sm">
+                            <a href="https://umap.org/"><i class="glyphicon glyphicon-home"> </i> Xem Thông Tin</a>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 col-sm-2  profile_details" >
+                    <div class="well profile_view">
+                      <div class="col-sm-12 text-center">
+                          <img src="images/auap.PNG" alt="ASEAN University Network  (AUN)" class=" img-fluid">
+                          <br/><br/>
+                      </div>
+                      <div class=" profile text-center">
+                        <div class=" col-sm-12 emphasis">
+                          <button type="button" class="btn btn-primary btn-sm">
+                            <a href="http://www.aun-qa.org/"><i class="glyphicon glyphicon-home"> </i> Xem Thông Tin</a>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 col-sm-2  profile_details" >
+                    <div class="well profile_view">
+                      <div class="col-sm-12 text-center">
+                          <img src="images/britishcouncil.png" alt="British Council - UK-VN HEP" class=" img-fluid">
+                          <br/><br/>
+                      </div>
+                      <div class=" profile text-center">
+                        <div class=" col-sm-12 emphasis">
+                          <button type="button" class="btn btn-primary btn-sm">
+                            <a href="https://www.britishcouncil.vn/en/programmes/education/internationalisation/impact-stories/uk-vn-hep-initiative-help-boost-uk-vietnam-partnership-building-effective-strategic-university"><i class="glyphicon glyphicon-home"> </i> Xem Thông Tin</a>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 col-sm-2  profile_details" >
+                    <div class="well profile_view">
+                      <div class="col-sm-12 text-center">
+                          <img src="images/kingsejong.jpg" alt="King Sejong Institute" class=" img-fluid">
+                          <br/><br/>
+                      </div>
+                      <div class=" profile text-center">
+                        <div class=" col-sm-12 emphasis">
+                          <button type="button" class="btn btn-primary btn-sm">
+                            <a href="https://www.ksif.or.kr/index.do?lang=eng"><i class="glyphicon glyphicon-home"> </i> Xem Thông Tin</a>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+                <!-- End Đơn vị hợp tác -->
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="x_panel">
+                <div class="col-md-12">
+                  <div class="x_title">
+                    <h2>ĐỘI NGŨ GUẢNG VIÊN </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Settings 1</a>
+                            <a class="dropdown-item" href="#">Settings 2</a>
+                          </div>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>  
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <!-- code card teacher -->
+                <div class="row">
+                  <div class="col-md-4 col-sm-4  profile_details" >
+                    <div class="well profile_view">
+                      <div class="col-sm-12">
+                        <h4 class="brief"><i>Thạc Sĩ</i></h4>
+                        <div class="left col-md-7 col-sm-7"  style="width: 300px;" >
+                          <h2>Nicole Pearson</h2>
+                          <p><strong>Mô tả: </strong>  </p>
+                          <ul class="list-unstyled">
+                            <li><i class="fa fa-envelope"></i> Email: </li>
+                            <li><i class="fa fa-phone"></i> Số điện thoại : </li>
+                          </ul>
+                        </div>
+                        <div class="right col-md-5 col-sm-5 text-center">
+                          <img src="images/img.jpg" alt="" class="img-circle img-fluid">
+                        </div>
+                      </div>
+                      <div class=" profile-bottom text-center">
+                        <div class=" col-sm-6 emphasis">
+                          <p class="ratings">
+                            <a>4.0</a>
+                            <a href="#"><span class="fa fa-star"></span></a>
+                            <a href="#"><span class="fa fa-star"></span></a>
+                            <a href="#"><span class="fa fa-star"></span></a>
+                            <a href="#"><span class="fa fa-star"></span></a>
+                            <a href="#"><span class="fa fa-star-o"></span></a>
+                          </p>
+                        </div>
+                        <div class=" col-sm-6 emphasis">
+                          <button type="button" class="btn btn-success btn-sm"> <i class="fa fa-user">
+                            </i> <i class="fa fa-comments-o"></i> </button>
+                          <button type="button" class="btn btn-primary btn-sm">
+                            <i class="fa fa-user"> </i> Xem Hồ Sơ
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+                </div>
+                <!-- end card teacher-->
+              </div>
+            </div>
+          </div>
+        </div>
+          
+        <!-- End page content -->
+        
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            <b>Scientific- Create by<span class="alert blue">Do Thi Thuy Quynh - Le Mai Khanh Hoa</span></b> 
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="js/custom.min.js"></script>
+	
+  </body>
+</html>
