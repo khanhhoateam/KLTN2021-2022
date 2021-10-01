@@ -80,7 +80,7 @@
                       </div>
                       </form>
 
-                      <form method= "POST" action="thiet_lap_dinh_muc_hoc_ham/xoa" class="form-horizontal form-label-left">
+                      <form method= "POST" action="/xoa" class="form-horizontal form-label-left">
                       <div class="col-md-12 col-sm-12 " style="font-size: medium; margin-top: 30px;">
                         <div class="x_panel">
                           <div class="x_title">
