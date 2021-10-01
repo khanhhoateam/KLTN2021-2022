@@ -60,9 +60,10 @@
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Chọn Học Hàm<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
                           <select class="form-control" name="TenHocHam" required>
-                            <option value="0">Chọn ... </option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                            <option value="">Chọn ... </option>
+                            @foreach($tenhocham as $hocham)
+                            <option value="{{ $hocham->TenHocHam }}">{{ $hocham->TenHocHam }}</option>
+                            @endforeach
                           </select>
                         </div>
                       </div>
@@ -74,7 +75,7 @@
                       <div class="form-group" style="margin: 30px 0 30px 15%; ">
                         <div class="col-md-6 offset-md-3">
                             <button type='reset' class="btn btn-primary"><i class="fa fa-eraser"></i> Hủy</button>
-                            <button type='submit' class="btn btn-success"><i class="fa fa-plus-square"></i> Thiết Lập Học Hàm Khác</button>
+                            <button type='submit' name="action" class="btn btn-success" value='add'><i class="fa fa-plus-square"></i> Thiết Lập Học Hàm Khác</button>
                         </div>
                       </div>
                       <div class="col-md-12 col-sm-12 " style="font-size: medium; margin-top: 30px;">
@@ -109,7 +110,7 @@
                                 <tr>
                                   <td colspan="4"></td>
                                   <td>
-                                    <button type="submit" class="btn btn-success btn-xs"><i class="fa fa-save"></i> Lưu </button>
+                                    <button type="submit" name="action" class="btn btn-success btn-xs" value='save'><i class="fa fa-save"></i> Lưu </button>
                                   </td>
                                 </tr>
                               </tfoot>
