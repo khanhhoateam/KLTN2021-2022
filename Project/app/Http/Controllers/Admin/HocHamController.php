@@ -26,4 +26,9 @@ class HocHamController extends Controller
         $result = $this->HocHamService->store($request);
         return redirect()->back(); 
     } 
+
+    public function delete(Request $request){ 
+        dd($request->input());
+    } 
+
 }
