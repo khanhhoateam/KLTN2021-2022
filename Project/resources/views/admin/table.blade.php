@@ -38,8 +38,12 @@
                 // output data of each row
                 $i=1;
                 while($row = $result->fetch_assoc()) {
-                  echo '<tr>
-                  <td>'.$i.'</td>
+                  echo '<form method="POST" action="xoa" class="form-horizontal form-label-left">'; ?>
+                  @csrf
+                  <?php
+                  echo '
+                  <tr>
+                  <td>'.$i.'</td> 
                   <td><input name="MaHocHam" id="MaHocHam" type="hidden" value="'.$row["MaHocHam"].'">'.$row["MaHocHam"].'</td>
                   <td>'.$row["TenHocHam"].'</td>
                   <td>'.$row["DiemDMHH"].'</td>
@@ -47,7 +51,8 @@
                   <td>
                     <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </button>
                   </td>
-                  </tr>';
+                  </tr>
+                  </form>';
                   $i++;
                 }
               } else {
