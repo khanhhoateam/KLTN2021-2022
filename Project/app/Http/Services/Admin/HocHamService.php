@@ -20,6 +20,6 @@ class HocHamService
   }
   public function delete($request)
   {
-      return HocHam::where('MaHocHam', $request->)->delete();
+      return HocHam::where('MaHocHam', $request->delete());
   }
 }
