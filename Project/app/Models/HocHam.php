@@ -9,12 +9,13 @@ class HocHam extends Model
 {
     use HasFactory;
     protected $table = 'HocHam';
-    
+
     protected $fillable = [
         'TenHocHam',
         'DiemDMHH',
         'MaDot'
     ];
+
 }
 
 
