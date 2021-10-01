@@ -22,9 +22,7 @@ class HocHamService
 
   public function delete($request)
   {
-      return HocHam::destroy([
-        "MaHocHam" => $request->input('MaHocHam')
-      ]);
+      return HocHam::where("MaHocHam", $request->input('MaHocHam'))->delete();
       
       //where('MaHocHam', $request->input('MaHocHam'))->delete();
   }
