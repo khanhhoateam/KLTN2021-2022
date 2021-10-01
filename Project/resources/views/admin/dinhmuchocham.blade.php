@@ -75,50 +75,11 @@
                       <div class="form-group" style="margin: 30px 0 30px 15%; ">
                         <div class="col-md-6 offset-md-3">
                             <button type='reset' class="btn btn-primary"><i class="fa fa-eraser"></i> Hủy</button>
-                            <button type='submit' name="action" class="btn btn-success" value='add'><i class="fa fa-plus-square"></i> Thiết Lập Học Hàm Khác</button>
+                            <button type='submit' name="action" class="btn btn-success" value='add'><i class="fa fa-plus-square"></i> Lưu </button>
                         </div>
                       </div>
-                      <div class="col-md-12 col-sm-12 " style="font-size: medium; margin-top: 30px;">
-                        <div class="x_panel">
-                          <div class="x_title">
-                            <h2>BẢNG TẠM LƯU <small>CÁC HỌC HÀM KHỞI TẠO</small></h2>
-                            <div class="clearfix"></div>
-                          </div>
-                          <div class="x_content">
-                            <table class="table table-striped projects">
-                              <thead>
-                                <tr>
-                                  <th style="width: 1%">STT</th>
-                                  <th>Mã Học Hàm</th>
-                                  <th>Tên Học Hàm</th>
-                                  <th>Điểm Định Mức Học Hàm</th>
-                                  <th  style="width: 10%">Cài Đặt</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>HH01</td>
-                                  <td>Thạc Sĩ</td>
-                                  <td>700</td>
-                                  <td>
-                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
-                                  </td>
-                                </tr>
-                              </tbody>
-                              <tfoot>
-                                <tr>
-                                  <td colspan="4"></td>
-                                  <td>
-                                    <button type="submit" name="action" class="btn btn-success btn-xs" value='save'><i class="fa fa-save"></i> Lưu </button>
-                                  </td>
-                                </tr>
-                              </tfoot>
-                            </table>
-                          </div>
-                        </div>
-                      </div> 
                     </form>
+                    @include('admin.table')
                   </div>
                 </div>
               </div>
