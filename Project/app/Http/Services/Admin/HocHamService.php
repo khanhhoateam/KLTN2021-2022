@@ -14,12 +14,18 @@ class HocHamService
         'MaDot' => (int) $request->input('dot')
       ]);
   }
+
   public function getInformation()
   {
       return HocHam::where('MaDot', 1)->get();
   }
+
   public function delete($request)
   {
-      return HocHam::where('MaHocHam', $request->input('MaHocHam'))->delete();
+      return HocHam::destroy([
+        "MaHocHam" => $request->input('MaHocHam')
+      ]);
+      
+      //where('MaHocHam', $request->input('MaHocHam'))->delete();
   }
 }
