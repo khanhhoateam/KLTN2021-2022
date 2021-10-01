@@ -18,4 +18,8 @@ class HocHamService
   {
       return HocHam::where('MaDot', 1)->get();
   }
+  public function delete($request)
+  {
+      return HocHam::where('MaHocHam', $request->)->delete();
+  }
 }

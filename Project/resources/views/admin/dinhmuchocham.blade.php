@@ -75,9 +75,12 @@
                       <div class="form-group" style="margin: 30px 0 30px 15%; ">
                         <div class="col-md-6 offset-md-3">
                             <button type='reset' class="btn btn-primary"><i class="fa fa-eraser"></i> Hủy</button>
-                            <button type='submit' name="action" class="btn btn-success" value='add'><i class="fa fa-plus-square"></i> Thiết Lập Học Hàm Khác</button>
+                            <button type='submit' name="action" class="btn btn-success" value='add'><i class="fa fa-plus-square"></i> Lưu </button>
                         </div>
                       </div>
+                      </form>
+
+                      <form method= "POST" action="thiet_lap_dinh_muc_hoc_ham/xoa" class="form-horizontal form-label-left">
                       <div class="col-md-12 col-sm-12 " style="font-size: medium; margin-top: 30px;">
                         <div class="x_panel">
                           <div class="x_title">
@@ -96,21 +99,50 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>HH01</td>
-                                  <td>Thạc Sĩ</td>
-                                  <td>700</td>
-                                  <td>
-                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
-                                  </td>
-                                </tr>
+                                <?php
+                                  $servername = "localhost";
+                                  $username = "root";
+                                  $password = "";
+                                  $dbname = "qlkh";
+                                  
+                                  // Create connection
+                                  $conn = new mysqli($servername, $username, $password, $dbname);
+                                  // Check connection
+                                  if ($conn->connect_error) {
+                                    die("Connection failed: " . $conn->connect_error);
+                                  }
+                                  
+                                  $sql = "SELECT MaHocHam , TenHocHam, DiemDMHH FROM HocHam Where MaDot = '3'";
+                                  $result = $conn->query($sql);
+                                  
+                                  if ($result->num_rows > 0) {
+                                    // output data of each row
+                                    $i=1;
+                                    while($row = $result->fetch_assoc()) {
+                                      echo '<tr>
+                                      <td>'.$i.'</td>
+                                      <td><input name="MaHocHam" id="MaHocHam" type="hidden" value="'.$row["MaHocHam"].'">'.$row["MaHocHam"].'</td>
+                                      <td>'.$row["TenHocHam"].'</td>
+                                      <td>'.$row["DiemDMHH"].'</td>
+              
+                                      <td>
+                                        <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </button>
+                                      </td>
+                                      </tr>';
+                                      $i++;
+                                    }
+                                  } else {
+                                    echo "0 results";
+                                  }
+                                  $conn->close();
+                                  
+                                ?>
                               </tbody>
                               <tfoot>
                                 <tr>
                                   <td colspan="4"></td>
                                   <td>
-                                    <button type="submit" name="action" class="btn btn-success btn-xs" value='save'><i class="fa fa-save"></i> Lưu </button>
+                                    <!--<button type="submit" name="action" class="btn btn-success btn-xs" value='save'><i class="fa fa-save"></i> Lưu </button>-->
                                   </td>
                                 </tr>
                               </tfoot>
