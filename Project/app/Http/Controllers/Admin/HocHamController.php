@@ -29,7 +29,8 @@ class HocHamController extends Controller
 
     public function delete(Request $request){ 
         dd($request->input());
-        return view('admin.dinhmuchocham');
+        $result = $this->HocHamService->delete($request);
+        return redirect()->back(); 
     } 
 
 }

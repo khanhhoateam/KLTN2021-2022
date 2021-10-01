@@ -79,7 +79,7 @@
                         </div>
                       </div>
                     </form>
-                    @include('table')
+                    @include('admin.table')
                   </div>
                 </div>
               </div>

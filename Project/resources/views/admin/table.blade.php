@@ -1,5 +1,5 @@
-
-<form method= "POST" action="xoa" class="form-horizontal form-label-left">
+<!--<form method= "POST" action="xoa" class="form-horizontal form-label-left">
+  @csrf-->
   <div class="col-md-12 col-sm-12 " style="font-size: medium; margin-top: 30px;">
     <div class="x_panel">
       <div class="x_title">
@@ -38,7 +38,10 @@
                 // output data of each row
                 $i=1;
                 while($row = $result->fetch_assoc()) {
-                  echo '<tr>
+                  echo '
+                  <form method= "POST" action="xoa" class="form-horizontal form-label-left">
+                  @csrf
+                  <tr>
                   <td>'.$i.'</td>
                   <td><input name="MaHocHam" id="MaHocHam" type="hidden" value="'.$row["MaHocHam"].'">'.$row["MaHocHam"].'</td>
                   <td>'.$row["TenHocHam"].'</td>
@@ -47,7 +50,8 @@
                   <td>
                     <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </button>
                   </td>
-                  </tr>';
+                  </tr>
+                  </form>';
                   $i++;
                 }
               } else {
@@ -69,4 +73,4 @@
       </div>
     </div>
   </div> 
-</form>
+<!--</form>-->
