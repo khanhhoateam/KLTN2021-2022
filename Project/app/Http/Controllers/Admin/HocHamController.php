@@ -4,16 +4,26 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Services\Admin\HocHamService;
 
 class HocHamController extends Controller
 {
-    public function edit(){
-        return view('admin.dinhmuchocham',[
-            'title' => 'THIẾT LẬP ĐỊNH MỨC HỌC HÀM'
-        ]);
+    protected $HocHamService;
+
+    public function __construct(HocHamService $HocHamService){
+        $this->HocHamService = $HocHamService;
     }
 
-    public function store(Request $request){
-        dd($request->input());
+    public function create(){
+        return view('admin.dinhmuchocham',[
+        'title' => 'THIẾT LẬP ĐỊNH MỨC HỌC HÀM',
+        'tenhocham' => $this->HocHamService->getInformation()
+        ]); 
     }
+
+    public function store(Request $request){ 
+        $request->request->add(['dot'=>'3']);
+        $result = $this->HocHamService->store($request);
+        return redirect()->back(); 
+    } 
 }

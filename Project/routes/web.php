@@ -16,8 +16,8 @@ use App\Http\Controllers\Admin\HocHamController;
 
 Route::prefix('admin')->group(function () {
     Route::prefix('thiet_lap_dinh_muc_hoc_ham')->group(function () {
-        Route::get('them',[HocHamController::class, 'edit']);  
-        Route::post('them',[HocHamController::class, 'store']);  
+        Route::get('them',[HocHamController::class, 'create']);  
+        Route::post('them', [HocHamController::class, 'store']);  
 
     });
 });
