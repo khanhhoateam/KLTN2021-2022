@@ -1,22 +1,20 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HocHam extends Model
+class HocHamTam extends Model
 {
     use HasFactory;
-    protected $table = 'HocHam';
 
+    public $table = "HocHamTam";
+    
     protected $fillable = [
         'TenHocHam',
         'DiemDMHH',
-        'MaDot'
+        'MaDot',
+        'Active'
     ];
-
 }
-
-
-

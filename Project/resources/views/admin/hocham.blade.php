@@ -54,15 +54,18 @@
                 <!-- Content -->
                 <div class="x_content">
                   <div id="wizard" class="form_wizard wizard_horizontal" style="margin-top: 30px;">
+                    
                     <form method= "POST" action="" class="form-horizontal form-label-left">
                     @csrf
+                      <input class="form-control" type="hidden" name="Ma-dot" value="{{ $madotmoi }}">
+                      <input class="form-control" type="hidden" name="Active" value="1">
                       <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Chọn Học Hàm<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
-                          <select class="form-control" name="TenHocHam" required>
+                          <select class="form-control" name="Ten-hoc-ham" required>
                             <option value="">Chọn ... </option>
-                            @foreach($tenhocham as $hocham)
-                            <option value="{{ $hocham->TenHocHam }}">{{ $hocham->TenHocHam }}</option>
+                            @foreach($hocham as $hocham)
+                            <option value="{{$hocham['TenHocHam']}}">{{$hocham['TenHocHam']}} </option>
                             @endforeach
                           </select>
                         </div>
@@ -70,7 +73,7 @@
                       <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Nhập điểm định mức<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='date' type="text" name="diem" required='required'></div>
+                            <input class="form-control" class='date' type="text" name="Diem" required='required'></div>
                       </div>
                       <div class="form-group" style="margin: 30px 0 30px 15%; ">
                         <div class="col-md-6 offset-md-3">
@@ -79,7 +82,53 @@
                         </div>
                       </div>
                     </form>
-                    @include('admin.table')
+                    <!-- table -->
+                    <form method= "POST" action="admin/thiet-lap-dinh-muc/hoc-ham/luu" class="form-horizontal form-label-left">
+                    @csrf
+                    <div class="x_content">
+                      <table class="table table-striped projects">
+                        <thead>
+                          <tr>
+                            <th style="width: 1%">STT</th>
+                            <th>Mã Học Hàm</th>
+                            <th>Tên Học Hàm</th>
+                            <th>Điểm Định Mức Học Hàm</th>
+                            <th  style="width: 10%">Cài Đặt</th>
+                          </tr>
+                        </thead>
+                          @php
+                          $i = 1;
+                          @endphp
+                          @foreach($bangtam as $tam)
+                          <form method="POST" action="xoa" class="form-horizontal form-label-left">
+                          @csrf
+                          <tbody>
+                            <tr>
+                              <td>{{ $i }}</td> 
+                              <td><input name="MaHocHam" id="MaHocHam" type="hidden" value="{{$tam['MaHocHam']}}">{{$tam['MaHocHam']}}</td>
+                              <td><input name="TenHocHam" id="TenHocHam" type="hidden" value="{{$tam['TenHocHam']}}">{{$tam['TenHocHam']}}</td>
+                              <td><input name="DiemDMHH" id="DiemDMHH" type="hidden" value="{{$tam['DiemDMHH']}}">{{$tam['DiemDMHH']}}</td>
+                              <td>
+                                <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                          @php
+                          $i++;
+                          @endphp
+                          @endforeach
+                          <tfoot>
+                            <tr>
+                              <td colspan="4"></td>
+                              <td>
+                                <button type="submit" class="btn btn-success btn-xs"><i class="fa fa-save"></i> Lưu </button>
+                              </td>
+                            </tr>
+                          </tfoot>
+                          </form>
+                      </table>
+                    </div>
+                    </form>
                   </div>
                 </div>
               </div>
