@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 01, 2021 lúc 07:01 AM
--- Phiên bản máy phục vụ: 10.4.18-MariaDB
--- Phiên bản PHP: 8.0.3
+-- Thời gian đã tạo: Th10 05, 2021 lúc 03:40 PM
+-- Phiên bản máy phục vụ: 10.4.21-MariaDB
+-- Phiên bản PHP: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,8 +40,7 @@ CREATE TABLE `dotkekhai` (
 --
 
 INSERT INTO `dotkekhai` (`MaDot`, `ThoiGianBatDau`, `ThoiGianKetThuc`, `created_at`, `updated_at`) VALUES
-(1, '2020-01-01 00:00:00', '2020-12-31 00:00:00', NULL, NULL),
-(3, '2021-01-01 00:00:00', '2021-09-30 21:59:59', NULL, NULL);
+(1, '2020-01-01 00:00:00', '2020-12-31 23:59:59', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -81,13 +80,37 @@ CREATE TABLE `hocham` (
 INSERT INTO `hocham` (`MaHocHam`, `TenHocHam`, `DiemDMHH`, `MaDot`, `created_at`, `updated_at`) VALUES
 (1, 'Giáo sư', 700, 1, NULL, NULL),
 (2, 'Phó giáo sư', 660, 1, NULL, NULL),
-(5, 'Giảng viên cao cấp', 660, 1, NULL, NULL),
-(6, 'Tiến sĩ', 630, 1, NULL, NULL),
-(7, 'Giảng viên chính', 630, 1, NULL, NULL),
-(8, 'Thạc sĩ', 590, 1, NULL, NULL),
-(9, 'Giảng viên', 590, 1, NULL, NULL),
-(20, 'Giáo sư', 700, 3, '2021-09-30 10:12:32', '2021-09-30 10:12:32'),
-(22, 'Phó giáo sư', 500, 3, '2021-09-30 21:58:15', '2021-09-30 21:58:15');
+(3, 'Giảng viên cao cấp', 660, 1, NULL, NULL),
+(4, 'Tiến sĩ', 630, 1, NULL, NULL),
+(5, 'Giảng viên chính', 630, 1, NULL, NULL),
+(6, 'Thạc sĩ', 590, 1, NULL, NULL),
+(7, 'Giảng viên', 590, 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `hochamtam`
+--
+
+CREATE TABLE `hochamtam` (
+  `MaHocHam` int(11) NOT NULL,
+  `TenHocHam` varchar(250) NOT NULL,
+  `DiemDMHH` int(11) NOT NULL,
+  `MaDot` int(11) NOT NULL,
+  `Active` int(11) NOT NULL,
+  `updated_at` time DEFAULT NULL,
+  `created_at` time DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `hochamtam`
+--
+
+INSERT INTO `hochamtam` (`MaHocHam`, `TenHocHam`, `DiemDMHH`, `MaDot`, `Active`, `updated_at`, `created_at`) VALUES
+(1, 'Giáo sư', 710, 2, 1, '12:07:32', '12:07:32'),
+(2, 'Giáo sư', 710, 2, 1, '12:08:05', '12:08:05'),
+(3, 'Giáo sư', 710, 2, 1, '12:29:58', '12:29:58'),
+(4, 'Giáo sư', 1, 2, 1, '12:31:54', '12:31:54');
 
 -- --------------------------------------------------------
 
@@ -122,13 +145,13 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(27, '2014_10_12_000000_create_users_table', 1),
-(28, '2014_10_12_100000_create_password_resets_table', 1),
-(29, '2019_08_19_000000_create_failed_jobs_table', 1),
-(30, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(31, '2021_09_29_143842_dot_ke_khai', 1),
-(32, '2021_09_29_144657_hoc_ham', 1),
-(33, '2021_09_29_144738_loai_mien_giam', 1);
+(15, '2014_10_12_000000_create_users_table', 1),
+(16, '2014_10_12_100000_create_password_resets_table', 1),
+(17, '2019_08_19_000000_create_failed_jobs_table', 1),
+(18, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(19, '2021_09_29_143842_dot_ke_khai', 1),
+(20, '2021_09_29_144738_loai_mien_giam', 1),
+(21, '2021_09_30_155556_hoc_ham', 1);
 
 -- --------------------------------------------------------
 
@@ -202,6 +225,12 @@ ALTER TABLE `hocham`
   ADD KEY `hocham_madot_foreign` (`MaDot`);
 
 --
+-- Chỉ mục cho bảng `hochamtam`
+--
+ALTER TABLE `hochamtam`
+  ADD PRIMARY KEY (`MaHocHam`);
+
+--
 -- Chỉ mục cho bảng `loaimiengiam`
 --
 ALTER TABLE `loaimiengiam`
@@ -243,7 +272,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `dotkekhai`
 --
 ALTER TABLE `dotkekhai`
-  MODIFY `MaDot` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `MaDot` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -255,7 +284,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT cho bảng `hocham`
 --
 ALTER TABLE `hocham`
-  MODIFY `MaHocHam` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `MaHocHam` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT cho bảng `hochamtam`
+--
+ALTER TABLE `hochamtam`
+  MODIFY `MaHocHam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `loaimiengiam`
@@ -267,7 +302,7 @@ ALTER TABLE `loaimiengiam`
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT cho bảng `personal_access_tokens`

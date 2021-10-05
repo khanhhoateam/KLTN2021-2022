@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HocHamController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,12 +14,18 @@ use App\Http\Controllers\Admin\HocHamController;
 */
 
 Route::prefix('admin')->group(function () {
-    Route::prefix('thiet_lap_dinh_muc_hoc_ham')->group(function () {
-        Route::get('them',[HocHamController::class, 'create']);  
-        Route::post('them', [HocHamController::class, 'store']);  
-        Route::post('xoa', [HocHamController::class, 'delete']);  
-
+    Route::get('/', function () {
+        return view('admin.home');
     });
+    Route::prefix('thiet-lap-dinh-muc')->group(function () {
+        Route::get('/', [HocHamController::class, 'create']);
+
+        Route::get('hoc-ham', [HocHamController::class, 'create']);
+
+        Route::post('hoc-ham', [HocHamController::class, 'temporary_save']);
+
+        Route::post('hocham/luu', [HocHamController::class, 'store']);
+        
+    });
+    
 });
-
-

@@ -4,32 +4,43 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Services\Admin\HocHamService;
+use App\Http\Services\Admin\HocHamServices;
 
 class HocHamController extends Controller
 {
-    protected $HocHamService;
-
-    public function __construct(HocHamService $HocHamService){
-        $this->HocHamService = $HocHamService;
-    }
-
-    public function create(){
-        return view('admin.dinhmuchocham',[
-        'title' => 'THIẾT LẬP ĐỊNH MỨC HỌC HÀM',
-        'tenhocham' => $this->HocHamService->getInformation()
-        ]); 
-    }
-
-    public function store(Request $request){ 
-        $request->request->add(['dot'=>'3']);
-        $result = $this->HocHamService->store($request);
-        return redirect()->back(); 
+    public function __construct(HocHamServices $HocHamServices) {
+        $this->HocHamServices = $HocHamServices;
     } 
 
-    public function delete(Request $request){ 
-        $result = $this->HocHamService->delete($request);
-        return redirect()->back(); 
-    } 
+    public function create() {
+        if(!($this->HocHamServices->temporary_save_list())->isEmpty()) {
+            $datatam = $this->HocHamServices->temporary_save_list();
+        }      
+        else{
+            $datatam = array([]);
+        } 
+        return view('admin.hocham', [
+            'title'=>'Thiết Lập Định Mức Học Hàm',
+            'madotmoi'=>'2',
+            'madotcu'=>'1',
+            'hocham'=> $this->HocHamServices->list(1),
+            'bangtam'=> $datatam
+        ]);
+    }
+    
+    public function store( Request $request ) {
+        $result = $this->HocHamServices->store($request);
+        return redirect()->back();
+    }
+    
+    public function temporary_save (Request $request) {
+        $result = $this->HocHamServices->temporary_save($request);
+        return redirect()->back();
+    }
+
+    public function del_temp_save (Request $request) {
+        $result = $this->HocHamServices->temporary_save($request);
+        return redirect()->back();
+    }
 
 }
