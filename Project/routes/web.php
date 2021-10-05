@@ -19,13 +19,14 @@ Route::prefix('admin')->group(function () {
     });
     Route::prefix('thiet-lap-dinh-muc')->group(function () {
         Route::get('/', [HocHamController::class, 'create']);
+        Route::get('/test', [HocHamController::class, 'createtest']);
 
         Route::get('hoc-ham', [HocHamController::class, 'create']);
 
         Route::post('hoc-ham', [HocHamController::class, 'temporary_save']);
 
         Route::post('hocham/luu', [HocHamController::class, 'store']);
-        
+
     });
-    
+
 });
