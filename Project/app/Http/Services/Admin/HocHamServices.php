@@ -9,11 +9,11 @@ use App\Models\Admin\HocHamTam;
 
 class HocHamServices {
 
-  public function store($request){
+  public function store($hocham){
     HocHam::create([
-      'TenHocHam' => $request->input('Ten-hoc-ham'),
-      'DiemDMHH' => $request->input('Diem'),
-      'MaDot' => $request->input('Ma-dot')
+      'TenHocHam' => $hocham["TenHocHam"],
+      'DiemDMHH' => $hocham["DiemDMHH"],
+      'MaDot' => $hocham["MaDot"]
   ]);
   }
 
@@ -21,7 +21,7 @@ class HocHamServices {
     return HocHam::where('MaDot', $madot)->get();
   }
 
-  public function temporary_save($request){
+  public function temporary_table($request){
     HocHamTam::create([
       'TenHocHam' => $request->input('Ten-hoc-ham'),
       'DiemDMHH' => $request->input('Diem'),
@@ -30,8 +30,16 @@ class HocHamServices {
   ]);
   }
 
-  public function temporary_save_list(){
+  public function temporary_table_list(){
     return HocHamTam::where('Active', 1)->get();
+  }
+
+  public function del_temp_table($id){
+    return HocHamTam::where('MaHocHam', $id)->delete();
+  }
+
+  public function update_temp_table($id){
+    return HocHamTam::where('MaHocHam', $id)->update(['Active' => 0]);
   }
   
 }
