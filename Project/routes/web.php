@@ -21,6 +21,7 @@ Route::prefix('admin')->group(function () {
     Route::prefix('thiet-lap-dinh-muc')->group(function () {
 
         Route::get('/', [HocHamController::class, 'create']);
+        Route::get('/test', [HocHamController::class, 'createtest']);
 
         Route::prefix('hoc-ham')->group(function () {
 
@@ -32,8 +33,6 @@ Route::prefix('admin')->group(function () {
 
             Route::get('luu', [HocHamController::class, 'store']);
 
-        });
-        
     });
-    
+
 });
