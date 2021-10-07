@@ -25,16 +25,16 @@
         <ul class="nav side-menu">
           <li><a><i class="fa fa-home"></i> Trang Chủ <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="index.html">Trang Chủ</a></li>
+              <li><a href="{{route('admin')}}">Trang Chủ</a></li>
               <li><a href="trangbao.html">Trang Báo</a></li>
               <li><a href="gioithieu.html">Giới Thiệu</a></li>
             </ul>
           </li>
-          <li><a href="modotkk.html"><i class="fa fa-edit"></i> Mở Đợt Kê Khai</a></li>
+          <li><a href="{{route('mo-dot-ke-khai')}}"><i class="fa fa-edit"></i> Mở Đợt Kê Khai</a></li>
           <li><a href="thietlaptl.html"><i class="fa fa-table"></i> Thiết lập thể loại </a></li>
           <li><a><i class="fa fa-cogs"></i> Thiết Lập Định Mức<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="dinhmuchh.html"> Định Mức Học Hàm </a></li>
+              <li><a href="{{route('thiet-lap-hoc-ham')}}"> Định Mức Học Hàm </a></li>
               <li><a href="dinhmucmg.html"> Định Mức Miễn Giảm </a></li>
             </ul>
           </li>

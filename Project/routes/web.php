@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HocHamController;
+use App\Http\Controllers\Admin\DotKeKhaiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,18 +16,34 @@ use App\Http\Controllers\Admin\HocHamController;
 
 Route::prefix('admin')->group(function () {
     Route::get('/', function () {
-        return view('admin.home');
-    });
+        return view('admin.index',[
+            'title'=>'Home'
+        ]);
+    })->name('admin');
+
+    //Thiet lap dinh muc hoc ham
     Route::prefix('thiet-lap-dinh-muc')->group(function () {
+
         Route::get('/', [HocHamController::class, 'create']);
-        Route::get('/test', [HocHamController::class, 'createtest']);
 
-        Route::get('hoc-ham', [HocHamController::class, 'create']);
+        Route::prefix('hoc-ham')->group(function () {
 
-        Route::post('hoc-ham', [HocHamController::class, 'temporary_save']);
+            Route::get('/', [HocHamController::class, 'create'])->name('thiet-lap-hoc-ham');
 
-        Route::post('hocham/luu', [HocHamController::class, 'store']);
+            Route::post('/', [HocHamController::class, 'temporary_table']);
 
+            Route::get('xoa/{HocHamTamID}', [HocHamController::class, 'del_temp_table']);
+
+            Route::get('luu', [HocHamController::class, 'store']);
+
+        });
+        
     });
 
+    //Mo dot ke khai
+    Route::prefix('mo-dot-ke-khai')->group(function(){
+        Route::get('/', [DotKeKhaiController::class, 'create'])->name("mo-dot-ke-khai");
+        Route::post('/', [DotKeKhaiController::class, 'store']);
+    });
+    
 });

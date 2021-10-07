@@ -54,9 +54,8 @@
                 <!-- Content -->
                 <div class="x_content">
                   <div id="wizard" class="form_wizard wizard_horizontal" style="margin-top: 30px;">
-                    
                     <form method= "POST" action="" class="form-horizontal form-label-left">
-                    @csrf
+                      @csrf
                       <input class="form-control" type="hidden" name="Ma-dot" value="{{ $madotmoi }}">
                       <input class="form-control" type="hidden" name="Active" value="1">
                       <div class="field item form-group">
@@ -83,8 +82,6 @@
                       </div>
                     </form>
                     <!-- table -->
-                    <form method= "POST" action="admin/thiet-lap-dinh-muc/hoc-ham/luu" class="form-horizontal form-label-left">
-                    @csrf
                     <div class="x_content">
                       <table class="table table-striped projects">
                         <thead>
@@ -99,36 +96,37 @@
                           @php
                           $i = 1;
                           @endphp
-                          @foreach($bangtam as $tam)
-                          <form method="POST" action="xoa" class="form-horizontal form-label-left">
-                          @csrf
-                          <tbody>
-                            <tr>
-                              <td>{{ $i }}</td> 
-                              <td><input name="MaHocHam" id="MaHocHam" type="hidden" value="{{$tam['MaHocHam']}}">{{$tam['MaHocHam']}}</td>
-                              <td><input name="TenHocHam" id="TenHocHam" type="hidden" value="{{$tam['TenHocHam']}}">{{$tam['TenHocHam']}}</td>
-                              <td><input name="DiemDMHH" id="DiemDMHH" type="hidden" value="{{$tam['DiemDMHH']}}">{{$tam['DiemDMHH']}}</td>
-                              <td>
-                                <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </button>
-                              </td>
-                            </tr>
-                          </tbody>
-                          @php
-                          $i++;
-                          @endphp
-                          @endforeach
+                          @if( count($bangtam) > 0 )
+                            @foreach($bangtam as $tam)
+                              <tbody>
+                                <tr>
+                                  <td>{{ $i }}</td> 
+                                  <td>{{$tam['MaHocHam']}}</td>
+                                  <td>{{$tam['TenHocHam']}}</td>
+                                  <td>{{$tam['DiemDMHH']}}</td>
+                                  <td>
+                                    <a href="hoc-ham/xoa/{{$tam['MaHocHam']}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                              @php
+                              $i++;
+                              @endphp 
+                            @endforeach
+                          @else
+                            
+                          @endif
                           <tfoot>
                             <tr>
                               <td colspan="4"></td>
                               <td>
-                                <button type="submit" class="btn btn-success btn-xs"><i class="fa fa-save"></i> Lưu </button>
+                                <a href="hoc-ham/luu" class="btn btn-success btn-xs"><i class="fa fa-save"></i> Lưu </a>
                               </td>
                             </tr>
                           </tfoot>
                           </form>
                       </table>
                     </div>
-                    </form>
                   </div>
                 </div>
               </div>

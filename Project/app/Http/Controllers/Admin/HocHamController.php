@@ -13,11 +13,11 @@ class HocHamController extends Controller
     } 
 
     public function create() {
-        if(!($this->HocHamServices->temporary_save_list())->isEmpty()) {
-            $datatam = $this->HocHamServices->temporary_save_list();
+        if(!($this->HocHamServices->temporary_table_list())->isEmpty()) {
+            $datatam = $this->HocHamServices->temporary_table_list();
         }      
         else{
-            $datatam = array([]);
+            $datatam = [];
         } 
         return view('admin.hocham', [
             'title'=>'Thiết Lập Định Mức Học Hàm',
@@ -28,18 +28,25 @@ class HocHamController extends Controller
         ]);
     }
     
-    public function store( Request $request ) {
-        $result = $this->HocHamServices->store($request);
-        return redirect()->back();
-    }
     
-    public function temporary_save (Request $request) {
-        $result = $this->HocHamServices->temporary_save($request);
+    public function temporary_table (Request $request) {
+        $this->HocHamServices->temporary_table($request);
         return redirect()->back();
     }
 
-    public function del_temp_save (Request $request) {
-        $result = $this->HocHamServices->temporary_save($request);
+    public function del_temp_table ($id) {
+        $this->HocHamServices->del_temp_table($id);
+        return redirect()->back();
+    }
+
+    public function store() {
+        $result = $this->HocHamServices->temporary_table_list();
+        if(!($this->HocHamServices->temporary_table_list())->isEmpty()) {
+            foreach($result as $result){
+                $this->HocHamServices->store($result);
+                $this->HocHamServices->update_temp_table($result["MaHocHam"]);
+            }
+        }
         return redirect()->back();
     }
 

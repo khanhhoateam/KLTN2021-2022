@@ -13,7 +13,7 @@ class Hochamtam extends Migration
      */
     public function up()
     {
-        Schema::create('HocHam', function (Blueprint $table) {
+        Schema::create('HocHamTam', function (Blueprint $table) {
             $table->id('MaHocHam');
             $table->string('TenHocHam');
             $table->integer('DiemDMHH');
