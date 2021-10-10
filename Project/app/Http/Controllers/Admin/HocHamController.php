@@ -19,7 +19,7 @@ class HocHamController extends Controller
         else{
             $datatam = [];
         }
-        return view('admin.hocham',[
+        return view('pages.admin.hocham.hocham',[
             'title'=>'Thiết Lập Định Mức Học Hàm',
             'MaDotMoi'=>'2',
             'MaDotCu'=>'1',
