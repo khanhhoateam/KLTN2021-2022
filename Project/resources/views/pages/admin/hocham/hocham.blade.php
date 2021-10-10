@@ -121,10 +121,7 @@
                               </tbody>
                               <tfoot>
                                 <tr>
-                                  <td>{{ $i }}</td>
-                                  <td>{{$tam['MaHocHam']}}</td>
-                                  <td>{{$tam['TenHocHam']}}</td>
-                                  <td>{{$tam['DiemDMHH']}}</td>
+                                  <td colspan="4"></td>
                                   <td>
                                   @if(count($BangTam) > 0)
                                     <a href="{{route('luu')}}" class="btn btn-success btn-xs">
@@ -132,25 +129,12 @@
                                   @endif
                                   </td>
                                 </tr>
-                              </tbody>
-                              @php
-                              $i++;
-                              @endphp
-                            @endforeach
-                          @else
-
-                          @endif
-                          <tfoot>
-                            <tr>
-                              <td colspan="4"></td>
-                              <td>
-                                <a href="hoc-ham/luu" class="btn btn-success btn-xs"><i class="fa fa-save"></i> Lưu </a>
-                              </td>
-                            </tr>
-                          </tfoot>
-                          </form>
-                      </table>
-                    </div>
+                              </tfoot>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>

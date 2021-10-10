@@ -10,7 +10,7 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
 
     Route::get('/', function () {
-        return view('home');
+        return view('index');
     });
 
     include_once app_path() . "/RouteCustom/phuc_routes.php";
