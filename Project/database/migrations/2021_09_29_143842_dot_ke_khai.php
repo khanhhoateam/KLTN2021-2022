@@ -19,7 +19,7 @@ class DotKeKhai extends Migration
             $table->datetime('ThoiGianKetThuc');
             $table->timestamps();
         });
-        
+
     }
 
     /**

@@ -41,5 +41,5 @@ class HocHamServices {
   public function update_temp_table($id){
     return HocHamTam::where('MaHocHam', $id)->update(['Active' => 0]);
   }
-  
+
 }
