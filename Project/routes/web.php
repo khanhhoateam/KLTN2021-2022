@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\HocHamController;
 Route::prefix('admin')->group(function () {
 
     Route::get('/', function () {
-        return view('admin.home');
+        return view('home');
     });
 
     include_once app_path() . "/RouteCustom/phuc_routes.php";

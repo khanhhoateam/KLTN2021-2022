@@ -10,16 +10,16 @@ class HocHamController extends Controller
 {
     public function __construct(HocHamServices $HocHamServices) {
         $this->HocHamServices = $HocHamServices;
-    } 
+    }
 
     public function create() {
         if(!($this->HocHamServices->temporary_table_list())->isEmpty()) {
             $datatam = $this->HocHamServices->temporary_table_list();
-        }      
+        }
         else{
             $datatam = [];
-        } 
-        return view('admin.hocham', [
+        }
+        return view('pages.admin.hocham.hocham', [
             'title'=>'Thiết Lập Định Mức Học Hàm',
             'madotmoi'=>'2',
             'madotcu'=>'1',
@@ -27,8 +27,8 @@ class HocHamController extends Controller
             'bangtam'=> $datatam
         ]);
     }
-    
-    
+
+
     public function temporary_table (Request $request) {
         $this->HocHamServices->temporary_table($request);
         return redirect()->back();

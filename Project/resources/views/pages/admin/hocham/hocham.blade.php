@@ -1,4 +1,4 @@
-@extends('admin.main')
+@extends('main')
 
 @section('content')
 <!-- /page content -->
@@ -100,7 +100,7 @@
                             @foreach($bangtam as $tam)
                               <tbody>
                                 <tr>
-                                  <td>{{ $i }}</td> 
+                                  <td>{{ $i }}</td>
                                   <td>{{$tam['MaHocHam']}}</td>
                                   <td>{{$tam['TenHocHam']}}</td>
                                   <td>{{$tam['DiemDMHH']}}</td>
@@ -111,10 +111,10 @@
                               </tbody>
                               @php
                               $i++;
-                              @endphp 
+                              @endphp
                             @endforeach
                           @else
-                            
+
                           @endif
                           <tfoot>
                             <tr>
