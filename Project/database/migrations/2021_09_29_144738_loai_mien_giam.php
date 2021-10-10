@@ -19,7 +19,7 @@ class LoaiMienGiam extends Migration
             $table->integer('DiemMienGiam');
             $table->float('TyLeMienGiam', 3, 2);
             $table->unsignedBigInteger('MaDot');
-            $table->foreign('MaDot')->references('MaDot')->on('dotkekhai')->onDelete('cascade');
+            $table->foreign('MaDot')->references('MaDot')->on('dotkekhai');
             $table->timestamps();
         });
     }

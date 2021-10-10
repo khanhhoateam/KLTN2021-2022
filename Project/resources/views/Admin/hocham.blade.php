@@ -1,4 +1,4 @@
-@extends('main')
+@extends('admin.main')
 
 @section('content')
 <!-- /page content -->
@@ -6,7 +6,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3>{{ $title }}</h3>
+        <h3>{{$title}}</h3>
       </div>
       <div class="title_right">
         <div class="col-md-5 col-sm-5   form-group pull-right top_search">
@@ -54,17 +54,17 @@
                 <!-- Content -->
                 <div class="x_content">
                   <div id="wizard" class="form_wizard wizard_horizontal" style="margin-top: 30px;">
-                    <form method= "POST" action="" class="form-horizontal form-label-left">
+                    <form method= "POST" action="{{route('bang-luu-tam')}}" class="form-horizontal form-label-left">
                       @csrf
-                      <input class="form-control" type="hidden" name="Ma-dot" value="{{ $madotmoi }}">
+                      <input class="form-control" type="hidden" name="Ma-dot" value="{{$MaDotMoi}}">
                       <input class="form-control" type="hidden" name="Active" value="1">
                       <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Chọn Học Hàm<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
                           <select class="form-control" name="Ten-hoc-ham" required>
                             <option value="">Chọn ... </option>
-                            @foreach($hocham as $hocham)
-                            <option value="{{$hocham['TenHocHam']}}">{{$hocham['TenHocHam']}} </option>
+                            @foreach($TenHocHam as $hocham)
+                            <option value="{{$hocham['TenHocHam']}}">{{$hocham['TenHocHam']}}</option>
                             @endforeach
                           </select>
                         </div>
@@ -72,61 +72,69 @@
                       <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Nhập điểm định mức<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
-                            <input class="form-control" class='date' type="text" name="Diem" required='required'></div>
+                          <input class="form-control" type="text" name="Diem" required='required'></div>
                       </div>
                       <div class="form-group" style="margin: 30px 0 30px 15%; ">
                         <div class="col-md-6 offset-md-3">
                             <button type='reset' class="btn btn-primary"><i class="fa fa-eraser"></i> Hủy</button>
-                            <button type='submit' name="action" class="btn btn-success" value='add'><i class="fa fa-plus-square"></i> Lưu </button>
+                            <button type='submit' class="btn btn-success"><i class="fa fa-plus-square"></i> Thiết Lập Học Hàm Khác</button>
                         </div>
                       </div>
-                    </form>
-                    <!-- table -->
-                    <div class="x_content">
-                      <table class="table table-striped projects">
-                        <thead>
-                          <tr>
-                            <th style="width: 1%">STT</th>
-                            <th>Mã Học Hàm</th>
-                            <th>Tên Học Hàm</th>
-                            <th>Điểm Định Mức Học Hàm</th>
-                            <th  style="width: 10%">Cài Đặt</th>
-                          </tr>
-                        </thead>
-                          @php
-                          $i = 1;
-                          @endphp
-                          @if( count($bangtam) > 0 )
-                            @foreach($bangtam as $tam)
-                              <tbody>
+                      <!--Bảng tạm lưu-->
+                      <div class="col-md-12 col-sm-12 " style="font-size: medium; margin-top: 30px;">
+                        <div class="x_panel">
+                          <div class="x_title">
+                            <h2>BẢNG TẠM LƯU <small>CÁC HỌC HÀM KHỞI TẠO</small></h2>
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content">
+                            <table class="table table-striped projects">
+                              <thead>
                                 <tr>
-                                  <td>{{ $i }}</td>
-                                  <td>{{$tam['MaHocHam']}}</td>
-                                  <td>{{$tam['TenHocHam']}}</td>
-                                  <td>{{$tam['DiemDMHH']}}</td>
+                                  <th style="width: 1%">STT</th>
+                                  <th>Mã Học Hàm</th>
+                                  <th>Tên Học Hàm</th>
+                                  <th>Điểm Định Mức Học Hàm</th>
+                                  <th  style="width: 10%">Cài Đặt</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                @php
+                                  $i=1;
+                                @endphp
+                                @if(count($BangTam) > 0)
+                                  @foreach ($BangTam as $tam)
+                                    <tr>
+                                      <td>{{$i}}</td>
+                                      <td>{{$tam['MaHocHam']}}</td>
+                                      <td>{{$tam['TenHocHam']}}</td>
+                                      <td>{{$tam['DiemDMHH']}}</td>
+                                      <td>
+                                        <a href="{{route('xoa',['HocHamTamID'=>$tam['MaHocHam']])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
+                                      </td>
+                                    </tr>
+                                    @php
+                                      $i++;
+                                    @endphp
+                                  @endforeach
+                                @endif
+                              </tbody>
+                              <tfoot>
+                                <tr>
+                                  <td colspan="4"></td>
                                   <td>
-                                    <a href="hoc-ham/xoa/{{$tam['MaHocHam']}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
+                                  @if(count($BangTam) > 0)
+                                    <a href="{{route('luu')}}" class="btn btn-success btn-xs">
+                                      <i class="fa fa-save"></i>Lưu</a>
+                                  @endif
                                   </td>
                                 </tr>
-                              </tbody>
-                              @php
-                              $i++;
-                              @endphp
-                            @endforeach
-                          @else
-
-                          @endif
-                          <tfoot>
-                            <tr>
-                              <td colspan="4"></td>
-                              <td>
-                                <a href="hoc-ham/luu" class="btn btn-success btn-xs"><i class="fa fa-save"></i> Lưu </a>
-                              </td>
-                            </tr>
-                          </tfoot>
-                          </form>
-                      </table>
-                    </div>
+                              </tfoot>
+                            </table>
+                          </div>
+                        </div>
+                      </div> 
+                    </form>
                   </div>
                 </div>
               </div>
@@ -156,19 +164,23 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>TL01</td>
-                            <td>Thạc Sĩ</td>
-                            <td>700</td>
-                            <td>D2021</td>
-                          </tr>
-                          <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
+                          @php
+                          $i=1;
+                          @endphp
+                          @if(count($DanhSachHocHam)>0)
+                            @foreach($DanhSachHocHam as $dshh)
+                            <tr>
+                              <td>{{$i}}</td>
+                              <td>{{$dshh['MaHocHam']}}</td>
+                              <td>{{$dshh['TenHocHam']}}</td>
+                              <td>{{$dshh['DiemDMHH']}}</td>
+                              <td>{{$MaDotMoi}}</td>
+                            </tr>
+                            @php
+                            $i++;
+                            @endphp
+                            @endforeach
+                          @endif
                         </tbody>
                       </table>
                     </div>

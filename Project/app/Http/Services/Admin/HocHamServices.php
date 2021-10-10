@@ -31,7 +31,7 @@ class HocHamServices {
   }
 
   public function temporary_table_list(){
-    return HocHamTam::where('Active', 1)->get();
+    return HocHamTam::where('Active', '1')->get();
   }
 
   public function del_temp_table($id){
@@ -41,5 +41,5 @@ class HocHamServices {
   public function update_temp_table($id){
     return HocHamTam::where('MaHocHam', $id)->update(['Active' => 0]);
   }
-
+  
 }

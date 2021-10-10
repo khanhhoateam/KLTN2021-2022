@@ -19,7 +19,7 @@ class Hochamtam extends Migration
             $table->integer('DiemDMHH');
             $table->unsignedBigInteger('MaDot');
             $table->integer('Active');
-            $table->foreign('MaDot')->references('MaDot')->on('dotkekhai')->onDelete('cascade');
+            $table->foreign('MaDot')->references('MaDot')->on('dotkekhai');
         });
     }
 

@@ -18,7 +18,7 @@ class HocHam extends Migration
             $table->string('TenHocHam');
             $table->integer('DiemDMHH');
             $table->unsignedBigInteger('MaDot');
-            $table->foreign('MaDot')->references('MaDot')->on('dotkekhai')->onDelete('cascade');
+            $table->foreign('MaDot')->references('MaDot')->on('dotkekhai');
             $table->timestamps();
         });
     }
