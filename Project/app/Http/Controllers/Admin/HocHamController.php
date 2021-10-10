@@ -18,14 +18,16 @@ class HocHamController extends Controller
         }      
         else{
             $datatam = [];
-        } 
-        return view('admin.hocham', [
+        }
+        return view('admin.hocham',[
             'title'=>'Thiết Lập Định Mức Học Hàm',
-            'madotmoi'=>'2',
-            'madotcu'=>'1',
-            'hocham'=> $this->HocHamServices->list(1),
-            'bangtam'=> $datatam
-        ]);
+            'MaDotMoi'=>'2',
+            'MaDotCu'=>'1',
+            'TenHocHam'=> $this->HocHamServices->list(1),
+            'BangTam'=> $datatam,
+            'DanhSachHocHam'=> $this->HocHamServices->list(2) 
+        ]); 
+        
     }
     
     

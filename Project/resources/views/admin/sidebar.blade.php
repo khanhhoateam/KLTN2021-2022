@@ -34,7 +34,7 @@
           <li><a href="thietlaptl.html"><i class="fa fa-table"></i> Thiết lập thể loại </a></li>
           <li><a><i class="fa fa-cogs"></i> Thiết Lập Định Mức<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="dinhmuchh.html"> Định Mức Học Hàm </a></li>
+              <li><a href="{{route('hoc-ham')}}"> Định Mức Học Hàm </a></li>
               <li><a href="dinhmucmg.html"> Định Mức Miễn Giảm </a></li>
             </ul>
           </li>
