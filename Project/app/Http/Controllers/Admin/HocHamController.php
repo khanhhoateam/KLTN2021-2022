@@ -27,7 +27,7 @@ class HocHamController extends Controller
             'BangTam'=> $datatam,
             'DanhSachHocHam'=> $this->HocHamServices->list(2) 
         ]); 
-        
+
     }
     
     
