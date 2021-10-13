@@ -43,10 +43,10 @@
           <div class="x_content">
             <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" id="create" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Thiết Lập Học Hàm</a>
+                <a class="nav-link active" id="create" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Thiết Lập Thể Loại</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="list" data-toggle="tab" href="#profile-tab" role="tab" aria-controls="profile" aria-selected="false">Danh Sách Học Hàm</a>
+                <a class="nav-link" id="list" data-toggle="tab" href="#profile-tab" role="tab" aria-controls="profile" aria-selected="false">Danh Sách Thể Loại</a>
               </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -54,37 +54,36 @@
                 <!-- Content -->
                 <div class="x_content">
                   <div id="wizard" class="form_wizard wizard_horizontal" style="margin-top: 30px;">
-                    <form method= "POST" action="{{route('bang-luu-tam-hh')}}" class="form-horizontal form-label-left">
+                    <form method="POST" action="{{route('bang-luu-tam-tl')}}" class="form-horizontal form-label-left">
                       @csrf
                       <input class="form-control" type="hidden" name="Ma-dot" value="{{$ThongTinDot['MaDot']}}">
                       <input class="form-control" type="hidden" name="Active" value="1">
                       <div class="field item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3  label-align">Chọn Học Hàm<span class="required">*</span></label>
+                        <label class="col-form-label col-md-3 col-sm-3  label-align">Chọn Thể Loại<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
-                          <select class="form-control" name="Ten-hoc-ham" required>
-                            <option value="">Chọn ... </option>
-                            @foreach($TenHocHam as $hocham)
-                            <option value="{{$hocham['TenHocHam']}}">{{$hocham['TenHocHam']}}</option>
+                          <select id="heard" name="Ten-the-loai" class="form-control" required>
+                            <option value="">Chọn..</option>
+                            @foreach($TheLoai as $tl)
+                            <option value="{{$tl['TenTheLoai']}}">{{$tl['TenTheLoai']}}</option>
                             @endforeach
                           </select>
                         </div>
                       </div>
                       <div class="field item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3  label-align">Nhập điểm định mức<span class="required">*</span></label>
+                        <label class="col-form-label col-md-3 col-sm-3  label-align">Nhập điểm<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
-                          <input class="form-control" type="text" name="Diem" required='required'></div>
+                            <input class="form-control" class='date' type="text" name="Diem" required='required'></div>
                       </div>
                       <div class="form-group" style="margin: 30px 0 30px 15%; ">
                         <div class="col-md-6 offset-md-3">
-                            <button type='reset' class="btn btn-primary"><i class="fa fa-eraser"></i> Hủy</button>
-                            <button type='submit' class="btn btn-success"><i class="fa fa-plus-square"></i> Thiết Lập Học Hàm Khác</button>
+                          <button type='reset' class="btn btn-primary"><i class="fa fa-eraser"></i> Hủy</button>
+                          <button type='submit' class="btn btn-success"><i class="fa fa-plus-square"></i> Thiết Lập Thể Loại Khác</button>
                         </div>
                       </div>
-                      <!--Bảng tạm lưu-->
                       <div class="col-md-12 col-sm-12 " style="font-size: medium; margin-top: 30px;">
                         <div class="x_panel">
                           <div class="x_title">
-                            <h2>BẢNG TẠM LƯU <small>CÁC HỌC HÀM KHỞI TẠO</small></h2>
+                            <h2>BẢNG TẠM LƯU <small>CÁC THỂ LOẠI KHỞI TẠO</small></h2>
                             <div class="clearfix"></div>
                           </div>
                           <div class="x_content">
@@ -92,25 +91,25 @@
                               <thead>
                                 <tr>
                                   <th style="width: 1%">STT</th>
-                                  <th>Mã Học Hàm</th>
-                                  <th>Tên Học Hàm</th>
-                                  <th>Điểm Định Mức Học Hàm</th>
+                                  <th>Mã Thể Loại</th>
+                                  <th>Tên Thể Loại</th>
+                                  <th>Điểm Định Mức Thể Loại</th>
                                   <th  style="width: 10%">Cài Đặt</th>
                                 </tr>
                               </thead>
                               <tbody>
-                                @php
+                              @php
                                   $i=1;
                                 @endphp
                                 @if(count($BangTam) > 0)
                                   @foreach ($BangTam as $tam)
                                     <tr>
                                       <td>{{$i}}</td>
-                                      <td>{{$tam['MaHocHam']}}</td>
-                                      <td>{{$tam['TenHocHam']}}</td>
-                                      <td>{{$tam['DiemDMHH']}}</td>
+                                      <td>{{$tam['MaTheLoai']}}</td>
+                                      <td>{{$tam['TenTheLoai']}}</td>
+                                      <td>{{$tam['DiemNC']}}</td>
                                       <td>
-                                        <a href="{{route('xoa-hh',['HocHamTamID'=>$tam['MaHocHam']])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
+                                        <a href="{{route('xoa-tl',['TheLoaiTamID'=>$tam['MaTheLoai']])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
                                       </td>
                                     </tr>
                                     @php
@@ -123,17 +122,17 @@
                                 <tr>
                                   <td colspan="4"></td>
                                   <td>
-                                  @if(count($BangTam) > 0)
-                                    <a href="{{route('luu-hh')}}" class="btn btn-success btn-xs">
-                                      <i class="fa fa-save"></i>Lưu</a>
-                                  @endif
+                                    @if(count($BangTam) > 0)
+                                      <a href="{{route('luu-tl')}}" class="btn btn-success btn-xs">
+                                        <i class="fa fa-save"></i>Lưu</a>
+                                    @endif
                                   </td>
                                 </tr>
                               </tfoot>
                             </table>
                           </div>
                         </div>
-                      </div>
+                      </div> 
                     </form>
                   </div>
                 </div>
@@ -157,9 +156,9 @@
                         <thead>
                           <tr>
                             <th>STT</th>
-                            <th>Mã Học Hàm</th>
-                            <th>Tên Học Hàm</th>
-                            <th>Điểm Định Mức Học Hàm</th>
+                            <th>Mã Thể Loại</th>
+                            <th>Tên Thể Loại</th>
+                            <th>Điểm Định Mức Thể Loại</th>
                             <th>Mã Đợt</th>
                           </tr>
                         </thead>
@@ -167,13 +166,13 @@
                           @php
                           $i=1;
                           @endphp
-                          @if(count($DanhSachHocHam)>0)
-                            @foreach($DanhSachHocHam as $dshh)
+                          @if(count($DanhSachTheLoai)>0)
+                            @foreach($DanhSachTheLoai as $dstl)
                             <tr>
                               <td>{{$i}}</td>
-                              <td>{{$dshh['MaHocHam']}}</td>
-                              <td>{{$dshh['TenHocHam']}}</td>
-                              <td>{{$dshh['DiemDMHH']}}</td>
+                              <td>{{$dstl['MaTheLoai']}}</td>
+                              <td>{{$dstl['TenTheLoai']}}</td>
+                              <td>{{$dstl['DiemNC']}}</td>
                               <td>{{$ThongTinDot['MaDot']}}</td>
                             </tr>
                             @php
