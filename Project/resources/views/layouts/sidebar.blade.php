@@ -7,7 +7,7 @@
     <!-- menu profile quick info -->
     <div class="profile clearfix">
       <div class="profile_pic">
-        <img src="../../images/img.jpg" alt="..." class="img-circle profile_img">
+        <img src="images/img.jpg" alt="..." class="img-circle profile_img">
       </div>
       <div class="profile_info">
         <span>Xin Chào,</span>
@@ -25,23 +25,23 @@
         <ul class="nav side-menu">
           <li><a><i class="fa fa-home"></i> Trang Chủ <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="index.html">Trang Chủ</a></li>
-              <li><a href="trangbao.html">Trang Báo</a></li>
-              <li><a href="gioithieu.html">Giới Thiệu</a></li>
+              <li><a href="{{route('index')}}">Trang Chủ</a></li>
+              <li><a href="#">Trang Báo</a></li>
+              <li><a href="#">Giới Thiệu</a></li>
             </ul>
           </li>
-          <li><a href="modotkk.html"><i class="fa fa-edit"></i> Mở Đợt Kê Khai</a></li>
-          <li><a href="thietlaptl.html"><i class="fa fa-table"></i> Thiết lập thể loại </a></li>
+          <li><a href="{{route('mo-dot-ke-khai')}}"><i class="fa fa-edit"></i> Mở Đợt Kê Khai</a></li>
+          <li><a href="{{route('the-loai')}}"><i class="fa fa-table"></i> Thiết lập thể loại </a></li>
           <li><a><i class="fa fa-cogs"></i> Thiết Lập Định Mức<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{route('hoc-ham')}}"> Định Mức Học Hàm </a></li>
-              <li><a href="dinhmucmg.html"> Định Mức Miễn Giảm </a></li>
+              <li><a href="#"> Định Mức Miễn Giảm </a></li>
             </ul>
           </li>
           <li><a><i class="fa fa-check-square-o"></i> Xét Duyệt <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="xetduyetmg.html"> Kê Khai Miễn Giảm </a></li>
-              <li><a href="xetduyethd.html"> Hoạt Động NCKH </a></li>
+              <li><a href="#"> Kê Khai Miễn Giảm </a></li>
+              <li><a href="#"> Hoạt Động NCKH </a></li>
             </ul>
           </li>
         </ul>
@@ -49,8 +49,8 @@
       <div class="menu_section">
         <h3>QUẢN LÝ</h3>
         <ul class="nav side-menu">
-          <li><a href="quanlygv.html"><i class="fa fa-graduation-cap"></i> Giảng Viên </a></li>
-          <li><a href="quanlyhd.html"><i class="fa fa-paint-brush"></i> Hoạt Động NCKH </a></li>
+          <li><a href="#"><i class="fa fa-graduation-cap"></i> Giảng Viên </a></li>
+          <li><a href="#"><i class="fa fa-paint-brush"></i> Hoạt Động NCKH </a></li>
         </ul>
       </div>
 

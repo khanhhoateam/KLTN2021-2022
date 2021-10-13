@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Services\Admin\HocHamServices;
+use App\Http\Services\Admin\DotKeKhaiServices;
 
 class HocHamController extends Controller
 {
-    public function __construct(HocHamServices $HocHamServices) {
+    public function __construct(HocHamServices $HocHamServices,DotKeKhaiServices $DotKeKhaiServices) {
         $this->HocHamServices = $HocHamServices;
+        $this->DotKeKhaiServices = $DotKeKhaiServices;
     }
 
     public function create() {
@@ -19,13 +21,16 @@ class HocHamController extends Controller
         else{
             $datatam = [];
         }
+
+        $madotmoi = $this->DotKeKhaiServices->currentActive()['MaDot'];
+        $madoicu = $this->DotKeKhaiServices->getPreviousActive($madotmoi)['MaDot'];
+
         return view('pages.admin.hocham.hocham',[
-            'title'=>'Thiết Lập Định Mức Học Hàm',
-            'MaDotMoi'=>'2',
-            'MaDotCu'=>'1',
-            'TenHocHam'=> $this->HocHamServices->list(1),
+            'title'=>'THIẾT LẬP ĐỊNH MỨC HỌC HÀM',
+            'ThongTinDot'=>$this->DotKeKhaiServices->currentActive(),
+            'TenHocHam'=> $this->HocHamServices->list($madoicu),
             'BangTam'=> $datatam,
-            'DanhSachHocHam'=> $this->HocHamServices->list(2)
+            'DanhSachHocHam'=> $this->HocHamServices->list($madotmoi)
         ]);
 
     }
