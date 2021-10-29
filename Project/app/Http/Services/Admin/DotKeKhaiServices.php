@@ -10,7 +10,7 @@ use App\Models\Admin\DotKeKhai;
 class DotKeKhaiServices {
 
   public function list(){
-    return DotKeKhai::get();
+    return DotKeKhai::orderBy('MaDot', 'desc')->get();
   }
 
   //Lay ma dot hien tai
@@ -25,10 +25,12 @@ class DotKeKhaiServices {
   }
 
   public function store($dkk){
+    DotKeKhai::where('enable', 1)
+    ->update(['enable' => 0]);
     DotKeKhai::create([
       'ThoiGianBatDau'=>$dkk['tgbd'],
-      'ThoiGianKetThuc'=>$dkk['tgkt']
+      'ThoiGianKetThuc'=>$dkk['tgkt'],
+      'Enable'=>$dkk['enable']
     ]);
-  }
-
+  } 
 }

@@ -1,8 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\HocHamController;
-use App\Http\Controllers\Admin\DotKeKhaiController;
 
 
 Route::get('/', function () {
@@ -18,6 +17,16 @@ Route::prefix('admin')->group(function () {
     });
 
     include_once app_path() . "/RouteCustom/phuc_routes.php";
-    include_once app_path() . "/RouteCustom/hoa_routes.php";
+    include_once app_path() . "/RouteCustom/hoa_admin_routes.php";
+
+});
+
+Route::prefix('user')->group(function () {
+
+    Route::get('/', function () {
+        return view('index');
+    });
+
+    include_once app_path() . "/RouteCustom/hoa_user_routes.php";
 
 });
