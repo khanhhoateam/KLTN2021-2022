@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Models\Admin;
+namespace App\Models\User;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DotKeKhai extends Model
+class ChiTietTam extends Model
 {
     use HasFactory;
-
-    public $table = "DotKeKhai";
-
+    public $table = "ChiTietTam";
+    
     protected $fillable = [
-        'ThoiGianBatDau',
-        'ThoiGianKetThuc',
+        'MaGiangVien',
+        'TenGiangVien',
+        'MaVaiTro',
         'Enable'
     ];
 }

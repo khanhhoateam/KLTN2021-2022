@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DotKeKhai extends Migration
+class VaiTro extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class DotKeKhai extends Migration
      */
     public function up()
     {
-        Schema::create('DotKeKhai', function (Blueprint $table) {
-            $table->id('MaDot');
-            $table->datetime('ThoiGianBatDau');
-            $table->datetime('ThoiGianKetThuc');
-            $table->integer('Enable');
+        Schema::create('VaiTro', function (Blueprint $table) {
+            $table->id('MaVaiTro');
+            $table->string('TenVaiTro');
+            $table->float('TiLe', 8, 2);
             $table->timestamps();
         });
-
     }
 
     /**
@@ -30,6 +28,6 @@ class DotKeKhai extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('DotKeKhai');
+        Schema::dropIfExists('VaiTro');
     }
 }

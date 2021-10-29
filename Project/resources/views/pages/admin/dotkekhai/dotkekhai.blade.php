@@ -56,6 +56,7 @@
                   <div id="wizard" class="form_wizard wizard_horizontal" style="margin-top: 30px;">
                     <form method="POST" action="" class="form-horizontal form-label-left">
                       @csrf
+                      <input class="form-control" type="hidden" value="1" name="enable">
                       <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Ngày Bắt Đầu<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
@@ -89,7 +90,7 @@
                       <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th>STT</th>
+                            <th>Mã Đợt</th>
                             <th>Ngày Bắt Đầu</th>
                             <th>Ngày Kết Thúc</th>
                           </tr>
@@ -100,7 +101,7 @@
                           @endphp
                           @foreach($DanhSachDKK as $ds)
                           <tr>
-                            <th scope="row">{{$i}}</th>
+                            <th scope="row">{{$ds['MaDot']}}</th>
                             <td>{{ date('d-m-Y', strtotime($ds['ThoiGianBatDau'])) }}</td>
                             <td>{{ date('d-m-Y', strtotime($ds['ThoiGianKetThuc'])) }}</td>
                           </tr>

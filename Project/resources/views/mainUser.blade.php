@@ -8,7 +8,7 @@
     <div class="container body">
       <div class="main_container">
         <!-- User sidebar -->
-        @include('layouts.sidebar')
+        @include('layouts.sidebarUser')
 
         <!-- top navigation -->
         @include('layouts.header')
