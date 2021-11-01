@@ -26,10 +26,11 @@ class KhaiBaoNCKHServices {
           'GVKeKhai' => $request['gv-ke-khai'],
           'TieuDe' => $request['tieu-de'],
           'NamXuatBan' => $request['nam-xb'],
-          'NhaSuatBan' => $request['nha-xb'],
+          'NhaXuatBan' => $request['nha-xb'],
           'TapChi' => $request['tap-chi'],
           'SoPhatHanh' => $request['so-phat-hanh'],
           'ChuanDanhMuc' => $request['chuan-danh-muc'],
+          'Diem' => '0'
         ]);
         $hoatdongcuoi = KhaiBaoNCKH::select('MaHoatDong')->orderBy('MaHoatDong', 'DESC')->first();
         foreach($giangvien as $gv){
@@ -53,10 +54,11 @@ class KhaiBaoNCKHServices {
           'GVKeKhai' => $request['gv-ke-khai'],
           'TieuDe' => '0',
           'NamXuatBan' => '0',
-          'NhaSuatBan' => '0',
+          'NhaXuatBan' => '0',
           'TapChi' => '0',
           'SoPhatHanh' => '0',
           'ChuanDanhMuc' => '0',
+          'Diem' => '0'
         ]);
         $hoatdongcuoi = KhaiBaoNCKH::select('MaHoatDong')->orderBy('MaHoatDong', 'DESC')->first();
         foreach($giangvien as $gv){
@@ -73,7 +75,6 @@ class KhaiBaoNCKHServices {
   }
 
   public function temporary_table($request){
-    //dd($request->input());
     $magiangvien = GiangVien::where('TenGiangVien', $request['ten-gv-tg'])
                     ->value('MaGiangVien');
     $tengiangvien = GiangVien::where('TenGiangVien', $request['ten-gv-tg'])
@@ -94,18 +95,4 @@ class KhaiBaoNCKHServices {
     return ChiTietTam::where('id', $id)->update(['Enable' => 0]);
   }
 
-  public function searchByName($request)
-    {
-        // $keyword = $request->input('ten-gv-tg');
-        // $giangvien = GiangVien::select('TenGiangVien')->where('TenGiangVien', 'LIKE', "%$keyword%")->get();
-        // return response()->json($giangvien);
-        $data = $request->all();
-
-        $query = $data['query'];
-
-        $filter_data = GiangVien::select('TenGiangVien')
-                        ->where('TenGiangVien', 'LIKE', '%'.$query.'%')
-                        ->get();
-        return response()->json($filter_data);
-    }
 }

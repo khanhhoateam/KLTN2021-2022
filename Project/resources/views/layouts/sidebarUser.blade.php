@@ -13,7 +13,7 @@
       </div>
       <div class="profile_info">
         <span>Xin Chào,</span>
-        <h2>John Doe</h2>
+        <h2>{{Auth::user()->name}}</h2>
       </div>
     </div>
     <!-- /menu profile quick info -->
@@ -34,7 +34,7 @@
           </li>
           <li><a href="#"><i class="fa fa-edit"></i> Quản lý hồ sơ</a></li>
           <li><a href="{{route('nckh')}}"><i class="fa fa-plus-square"></i> Kê khai hoạt động </a></li>
-          <li><a href="#"><i class="fa fa-table"></i> Danh sách NCKH kê khai</a></li>
+          <li><a href="{{route('ds-nckh')}}"><i class="fa fa-table"></i> Danh sách NCKH kê khai</a></li>
         </ul>
       </div>
     </div>

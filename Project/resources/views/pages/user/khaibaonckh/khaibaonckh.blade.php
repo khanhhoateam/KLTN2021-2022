@@ -100,7 +100,7 @@
             <form class="form-horizontal form-label-left" method="POST" action="">
               @csrf
               <input type="hidden" class="form-control" name="trang-thai" value="Chờ duyệt">
-              <input type="hidden" class="form-control" name="gv-ke-khai" value="1">
+              <input type="hidden" class="form-control" name="gv-ke-khai" value="{{Auth::id()}}">
               <div class="form-group row ">
                 <label class="control-label col-md-4 col-sm-4 label-align">Tên Hoạt Động NCKH </label>
                 <div class="col-md-5 col-sm-5 ">

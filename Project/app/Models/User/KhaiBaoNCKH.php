@@ -21,9 +21,10 @@ class KhaiBaoNCKH extends Model
         'GVKeKhai',	
         'TieuDe',	
         'NamXuatBan',	
-        'NhaSuatBan',	
+        'NhaXuatBan',	
         'TapChi',	
         'SoPhatHanh',	
-        'ChuanDanhMuc'
+        'ChuanDanhMuc',
+        'Diem'
     ];
 }
