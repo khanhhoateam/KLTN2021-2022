@@ -8,12 +8,12 @@ Route::get('/login', function () {
     return view('login',[
         'title' => 'ĐĂNG NHẬP'
     ]);
-});
+})->middleware('CheckUser');
 
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('CheckLogin')->group(function () {
 
     Route::get('/', function () {
         return view('index',[
@@ -26,7 +26,7 @@ Route::prefix('admin')->group(function () {
 
 });
 
-Route::prefix('user')->group(function () {
+Route::prefix('user')->middleware('CheckLogin')->group(function () {
 
     Route::get('/', function () {
         return view('indexUser',[

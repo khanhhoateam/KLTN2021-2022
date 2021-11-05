@@ -11,7 +11,10 @@ class KhaiBaoNCKH extends Model
 
     public $table = "HoatDong";
     
+    protected $primaryKey = 'MaHoatDong';
+    
     protected $fillable = [
+        'MaHoatDong',
         'MaTheLoai',
         'TenHD',
         'File',
@@ -27,4 +30,9 @@ class KhaiBaoNCKH extends Model
         'ChuanDanhMuc',
         'Diem'
     ];
+
+    public function ChiTietHD()
+    {
+        return $this->hasMany(ChiTietHD::class, 'MaHoatDong', 'MaHoatDong');
+    }
 }

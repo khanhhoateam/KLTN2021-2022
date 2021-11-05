@@ -32,6 +32,42 @@ class HoatDongSeeder extends Seeder
             'ChuanDanhMuc' => 'SCIE',
 			'Diem' => '1200',
         ]);
+
+        DB::table('HoatDong')->insert([
+			'MaHoatDong' => '2',
+            'MaTheLoai' => '1',
+            'TenHD' => 'Hoạt động 2',
+            'File' => '....',
+            'TrangThai' => 'Đã duyệt',
+			'HanSuDung' => '3',
+            'MoTa' => 'ứng dụng vi sinh vào thực phẩm đóng hộp',
+            'GVKeKhai' => '3',
+            'TieuDe' => 'Vi sinh vật và thực phẩm',
+            'NamXuatBan' => '2020',
+            'NhaXuatBan' => 'NXB Trẻ',
+            'TapChi' => 'Thanh niên',
+            'SoPhatHanh' => 'SH01X',
+            'ChuanDanhMuc' => 'SCIE',
+			'Diem' => '1200',
+        ]);
+
+        DB::table('HoatDong')->insert([
+			'MaHoatDong' => '3',
+            'MaTheLoai' => '1',
+            'TenHD' => 'Hoạt động 2',
+            'File' => '....',
+            'TrangThai' => 'Đã duyệt',
+			'HanSuDung' => '3',
+            'MoTa' => 'ứng dụng vi sinh vào thực phẩm đóng hộp',
+            'GVKeKhai' => '3',
+            'TieuDe' => 'Vi sinh vật và thực phẩm',
+            'NamXuatBan' => '2020',
+            'NhaXuatBan' => 'NXB Trẻ',
+            'TapChi' => 'Thanh niên',
+            'SoPhatHanh' => 'SH01X',
+            'ChuanDanhMuc' => 'SCIE',
+			'Diem' => '1200',
+        ]);
     
     }
 }

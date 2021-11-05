@@ -76,9 +76,9 @@
                         <tr>
                           <td>{{$i}}</td>
                           <td>{{$gvtg['TenGiangVien']}}</td>
-                          <td>{{$gvtg['MaVaiTro']}}</td>
+                          <td>{{$vaitro[$gvtg['MaVaiTro']-1]['TenVaiTro']}}</td>
                           <td>
-                            <a href="{{route('xoa-luu-tam-nckh', ['id'=>$gvtg['id']])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
+                            <a href="{{route('xoa-luu-tam-nckh', ['id'=>$gvtg['id']])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Xóa</a>
                           </td>
                         </tr>
                         @php

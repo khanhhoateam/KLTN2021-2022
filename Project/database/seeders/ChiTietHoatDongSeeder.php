@@ -33,5 +33,26 @@ class ChiTietHoatDongSeeder extends Seeder
             'GioNC' => '240',
             'MaVaiTro' => '2',
         ]);
+
+        DB::table('ChiTietHoatDong')->insert([
+            'MaHoatDong' => '2',
+            'MaGiangVien' => '1',
+            'GioNC' => '720',
+            'MaVaiTro' => '1',
+        ]);
+
+        DB::table('ChiTietHoatDong')->insert([
+            'MaHoatDong' => '2',
+            'MaGiangVien' => '2',
+            'GioNC' => '240',
+            'MaVaiTro' => '2',
+        ]);
+
+        DB::table('ChiTietHoatDong')->insert([
+            'MaHoatDong' => '3',
+            'MaGiangVien' => '1',
+            'GioNC' => '720',
+            'MaVaiTro' => '1',
+        ]);
     }
 }
