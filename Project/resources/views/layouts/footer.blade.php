@@ -43,23 +43,9 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-<script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
 
-  var path = "{{ url('http://localhost/Project/public/user/khai-bao-nckh/autocomplete') }}";
-  
-  $('#autocomplete').typeahead({
-  
-      source: function(query, process){
-  
-          return $.get(path, {query:query}, function(data){
-  
-              return process(data);
-  
-          });
-  
-      }
-  
-  });
-  
-  </script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
 

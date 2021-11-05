@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\User\KhaiBaoNCKHController;
+use App\Http\Controllers\User\DanhSachNCKHController;
 
 //User
 Route::prefix('khai-bao-nckh')->group(function(){
@@ -13,7 +14,9 @@ Route::prefix('khai-bao-nckh')->group(function(){
 
   //xoa bang luu tam
   Route::get('/xoa-luu-tam/{id}', [KhaiBaoNCKHController::class, 'del_temp_table'])->name('xoa-luu-tam-nckh');
+  
+});
 
-  //auto complete search
-  Route::get('/autocomplete', [KhaiBaoNCKHController::class, 'autocomplete'])->name('autocomplete');
+Route::prefix('danh-sach-nckh')->group(function(){
+  Route::get('/', [DanhSachNCKHController::class, 'list'])->name('ds-nckh');
 });

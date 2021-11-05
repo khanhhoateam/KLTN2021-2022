@@ -8,6 +8,8 @@ use App\Models\User\KhaiBaoNCKH;
 use App\Models\User\ChiTietTam;
 use App\Models\User\ChiTietHD;
 use App\Models\User\GiangVien;
+use App\Models\User;
+use Illuminate\Support\Arr;
 
 class KhaiBaoNCKHServices {
   public function store($request){
@@ -15,6 +17,10 @@ class KhaiBaoNCKHServices {
       $giangvien = ChiTietTam::where('Enable', 1)->get();
     }
     if($request->filled('the-loai', 'ten-hd', 'file', 'trang-thai', 'hsd', 'mo-ta', 'tieu-de', 'nam-xb', 'nha-xb', 'tap-chi', 'so-phat-hanh', 'chuan-danh-muc')){
+        $gv = GiangVien::where(
+                              'TenGiangVien', 
+                              User::where('id', $request['gv-ke-khai'])->value('name')
+                              )->value('MaGiangVien');
         KhaiBaoNCKH::create([
           'MaTheLoai' => $request['the-loai'],
           'TenHD' => $request['ten-hd'],
@@ -22,8 +28,7 @@ class KhaiBaoNCKHServices {
           'TrangThai' => $request['trang-thai'],
           'HanSuDung' => $request['hsd'],
           'MoTa' => $request['mo-ta'],
-          //su dung session user
-          'GVKeKhai' => $request['gv-ke-khai'],
+          'GVKeKhai' => $gv,
           'TieuDe' => $request['tieu-de'],
           'NamXuatBan' => $request['nam-xb'],
           'NhaXuatBan' => $request['nha-xb'],
@@ -43,15 +48,18 @@ class KhaiBaoNCKHServices {
         }
     }
     else{
+        $gv = GiangVien::where(
+                              'TenGiangVien', 
+                              User::where('id', $request['gv-ke-khai'])->value('name')
+                              )->value('MaGiangVien');
         KhaiBaoNCKH::create([
           'MaTheLoai' => $request['the-loai'],
           'TenHD' => $request['ten-hd'],
           'File' => $request['file'],
           'TrangThai' => $request['trang-thai'],
           'HanSuDung' => $request['hsd'],
-          'MoTa' => 'abc',
-          //su dung session user
-          'GVKeKhai' => $request['gv-ke-khai'],
+          'MoTa' => $request['mo-ta'],
+          'GVKeKhai' => $gv,
           'TieuDe' => '0',
           'NamXuatBan' => '0',
           'NhaXuatBan' => '0',
