@@ -8,8 +8,6 @@ use App\Models\User\KhaiBaoNCKH;
 use App\Models\User\ChiTietTam;
 use App\Models\User\ChiTietHD;
 use App\Models\User\GiangVien;
-use App\Models\User;
-use Illuminate\Support\Arr;
 
 class KhaiBaoNCKHServices {
   public function store($request){
@@ -17,10 +15,6 @@ class KhaiBaoNCKHServices {
       $giangvien = ChiTietTam::where('Enable', 1)->get();
     }
     if($request->filled('the-loai', 'ten-hd', 'file', 'trang-thai', 'hsd', 'mo-ta', 'tieu-de', 'nam-xb', 'nha-xb', 'tap-chi', 'so-phat-hanh', 'chuan-danh-muc')){
-        $gv = GiangVien::where(
-                              'TenGiangVien', 
-                              User::where('id', $request['gv-ke-khai'])->value('name')
-                              )->value('MaGiangVien');
         KhaiBaoNCKH::create([
           'MaTheLoai' => $request['the-loai'],
           'TenHD' => $request['ten-hd'],
@@ -28,14 +22,14 @@ class KhaiBaoNCKHServices {
           'TrangThai' => $request['trang-thai'],
           'HanSuDung' => $request['hsd'],
           'MoTa' => $request['mo-ta'],
-          'GVKeKhai' => $gv,
+          //su dung session user
+          'GVKeKhai' => $request['gv-ke-khai'],
           'TieuDe' => $request['tieu-de'],
           'NamXuatBan' => $request['nam-xb'],
-          'NhaXuatBan' => $request['nha-xb'],
+          'NhaSuatBan' => $request['nha-xb'],
           'TapChi' => $request['tap-chi'],
           'SoPhatHanh' => $request['so-phat-hanh'],
           'ChuanDanhMuc' => $request['chuan-danh-muc'],
-          'Diem' => '0'
         ]);
         $hoatdongcuoi = KhaiBaoNCKH::select('MaHoatDong')->orderBy('MaHoatDong', 'DESC')->first();
         foreach($giangvien as $gv){
@@ -48,25 +42,21 @@ class KhaiBaoNCKHServices {
         }
     }
     else{
-        $gv = GiangVien::where(
-                              'TenGiangVien', 
-                              User::where('id', $request['gv-ke-khai'])->value('name')
-                              )->value('MaGiangVien');
         KhaiBaoNCKH::create([
           'MaTheLoai' => $request['the-loai'],
           'TenHD' => $request['ten-hd'],
           'File' => $request['file'],
           'TrangThai' => $request['trang-thai'],
           'HanSuDung' => $request['hsd'],
-          'MoTa' => $request['mo-ta'],
-          'GVKeKhai' => $gv,
+          'MoTa' => 'abc',
+          //su dung session user
+          'GVKeKhai' => $request['gv-ke-khai'],
           'TieuDe' => '0',
           'NamXuatBan' => '0',
-          'NhaXuatBan' => '0',
+          'NhaSuatBan' => '0',
           'TapChi' => '0',
           'SoPhatHanh' => '0',
           'ChuanDanhMuc' => '0',
-          'Diem' => '0'
         ]);
         $hoatdongcuoi = KhaiBaoNCKH::select('MaHoatDong')->orderBy('MaHoatDong', 'DESC')->first();
         foreach($giangvien as $gv){
@@ -83,6 +73,7 @@ class KhaiBaoNCKHServices {
   }
 
   public function temporary_table($request){
+    //dd($request->input());
     $magiangvien = GiangVien::where('TenGiangVien', $request['ten-gv-tg'])
                     ->value('MaGiangVien');
     $tengiangvien = GiangVien::where('TenGiangVien', $request['ten-gv-tg'])
@@ -103,4 +94,18 @@ class KhaiBaoNCKHServices {
     return ChiTietTam::where('id', $id)->update(['Enable' => 0]);
   }
 
+  public function searchByName($request)
+    {
+        // $keyword = $request->input('ten-gv-tg');
+        // $giangvien = GiangVien::select('TenGiangVien')->where('TenGiangVien', 'LIKE', "%$keyword%")->get();
+        // return response()->json($giangvien);
+        $data = $request->all();
+
+        $query = $data['query'];
+
+        $filter_data = GiangVien::select('TenGiangVien')
+                        ->where('TenGiangVien', 'LIKE', '%'.$query.'%')
+                        ->get();
+        return response()->json($filter_data);
+    }
 }

@@ -26,11 +26,10 @@ class HoatDong extends Migration
             $table->foreign('GVKeKhai')->references('MaGiangVien')->on('giangvien')->onDelete('cascade');
             $table->string('TieuDe');
             $table->integer('NamXuatBan');
-            $table->string('NhaXuatBan');
+            $table->string('NhaSuatBan');
             $table->string('TapChi');
             $table->string('SoPhatHanh');
             $table->string('ChuanDanhMuc');
-            $table->integer('Diem');
             $table->timestamps();
         });
     }

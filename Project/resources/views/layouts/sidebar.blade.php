@@ -11,7 +11,7 @@
       </div>
       <div class="profile_info">
         <span>Xin Chào,</span>
-        <h2>{{Auth::user()->name}}</h2>
+        <h2>John Doe</h2>
       </div>
     </div>
     <!-- /menu profile quick info -->
@@ -27,7 +27,7 @@
             <ul class="nav child_menu">
               <li><a href="{{route('index')}}">Trang Chủ</a></li>
               <li><a href="#">Trang Báo</a></li>
-              <li><a href="#">Giới Thiệu</a></li>
+              <li><a href="{{route('gioi-thieu')}}">Giới Thiệu</a></li>
             </ul>
           </li>
           <li><a href="{{route('mo-dot-ke-khai')}}"><i class="fa fa-edit"></i> Mở Đợt Kê Khai</a></li>
@@ -50,7 +50,7 @@
         <h3>QUẢN LÝ</h3>
         <ul class="nav side-menu">
           <li><a href="#"><i class="fa fa-graduation-cap"></i> Giảng Viên </a></li>
-          <li><a href="#"><i class="fa fa-paint-brush"></i> Hoạt Động NCKH </a></li>
+          <li><a href="{{route('quan-ly-nckh')}}"><i class="fa fa-paint-brush"></i> Hoạt Động NCKH </a></li>
         </ul>
       </div>
 

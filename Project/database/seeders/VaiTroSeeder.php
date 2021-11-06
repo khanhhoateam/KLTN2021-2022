@@ -17,11 +17,11 @@ class VaiTroSeeder extends Seeder
     {
         DB::table('VaiTro')->insert([
             'TenVaiTro' => 'Tác giả',
-            'TiLe' => '0.4'
+            'TiLe' => '0'
         ]);
         DB::table('VaiTro')->insert([
             'TenVaiTro' => 'Người tham gia',
-            'TiLe' => '0.6'
+            'TiLe' => '0'
         ]);
     }
 }

@@ -76,9 +76,9 @@
                         <tr>
                           <td>{{$i}}</td>
                           <td>{{$gvtg['TenGiangVien']}}</td>
-                          <td>{{$vaitro[$gvtg['MaVaiTro']-1]['TenVaiTro']}}</td>
+                          <td>{{$gvtg['MaVaiTro']}}</td>
                           <td>
-                            <a href="{{route('xoa-luu-tam-nckh', ['id'=>$gvtg['id']])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Xóa</a>
+                            <a href="{{route('xoa-luu-tam-nckh', ['id'=>$gvtg['id']])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Xóa </a>
                           </td>
                         </tr>
                         @php
@@ -100,7 +100,7 @@
             <form class="form-horizontal form-label-left" method="POST" action="">
               @csrf
               <input type="hidden" class="form-control" name="trang-thai" value="Chờ duyệt">
-              <input type="hidden" class="form-control" name="gv-ke-khai" value="{{Auth::id()}}">
+              <input type="hidden" class="form-control" name="gv-ke-khai" value="1">
               <div class="form-group row ">
                 <label class="control-label col-md-4 col-sm-4 label-align">Tên Hoạt Động NCKH </label>
                 <div class="col-md-5 col-sm-5 ">
