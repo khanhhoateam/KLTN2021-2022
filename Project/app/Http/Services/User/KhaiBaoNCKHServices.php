@@ -103,4 +103,7 @@ class KhaiBaoNCKHServices {
     return ChiTietTam::where('id', $id)->update(['Enable' => 0]);
   }
 
+  public function listTrangThai(){
+    return KhaiBaoNCKH::distinct()->get('TrangThai');
+  }
 }

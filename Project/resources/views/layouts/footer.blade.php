@@ -39,13 +39,6 @@
 <!-- Custom Theme Scripts -->
 <script src="js/custom.min.js"></script>
 
-<script src="js/AutocompleteForm.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> --}}
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
 

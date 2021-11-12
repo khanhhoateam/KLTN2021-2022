@@ -13,6 +13,10 @@ class DotKeKhaiServices {
     return DotKeKhai::orderBy('MaDot', 'desc')->get();
   }
 
+  public function listByID($id){
+    return DotKeKhai::where('MaDot', $id)->get();
+  }
+
   //Lay ma dot hien tai
   public function currentActive(){
     return DotKeKhai::orderBy('MaDot', 'desc')->first();
@@ -33,4 +37,10 @@ class DotKeKhaiServices {
       'Enable'=>$dkk['enable']
     ]);
   } 
+
+  public function ds_gv($id){
+    $dkk = DotKeKhai::find($id);
+    $gv = $dkk->GiangVien->sortDesc();
+    return $gv;
+  }
 }

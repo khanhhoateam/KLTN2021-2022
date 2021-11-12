@@ -4,7 +4,8 @@ use App\Http\Controllers\Admin\HocHamController;
 use App\Http\Controllers\Admin\DotKeKhaiController;
 use App\Http\Controllers\Admin\MienGiamController;
 use App\Http\Controllers\Admin\TheLoaiController;
-use App\Http\Controllers\User\KhaiBaoNCKHController;
+use App\Http\Controllers\Admin\XetDuyetNCKHController;
+use App\Http\Controllers\Admin\QuanLyGVController ;
 
 //Admin
 Route::prefix('thiet-lap-dinh-muc')->group(function () {
@@ -27,11 +28,11 @@ Route::prefix('thiet-lap-dinh-muc')->group(function () {
 
     Route::get('/', [MienGiamController::class, 'create'])->name('mien-giam');
 
-    Route::post('/', [MienGiamController::class, 'temporary_table'])->name('bang-luu-tam-tl');
+    Route::post('/', [MienGiamController::class, 'temporary_table'])->name('bang-luu-tam-mg');
 
-    Route::get('xoa/{MienGiamTamID}', [MienGiamController::class, 'del_temp_table'])->name('xoa');
+    Route::get('xoa/{MienGiamTamID}', [MienGiamController::class, 'del_temp_table'])->name('xoa-mg');
 
-    Route::get('luu', [MienGiamController::class, 'store'])->name('luu');
+    Route::get('luu', [MienGiamController::class, 'store'])->name('luu-mg');
 
   });
 
@@ -56,4 +57,15 @@ Route::prefix('thiet-lap-the-loai')->group(function(){
   Route::get('luu', [TheLoaiController::class, 'store'])->name('luu-tl');
 
 
+});
+
+Route::prefix('xet-duyet-nckh')->group(function(){
+  Route::get('/', [XetDuyetNCKHController::class, 'list'])->name('xet-duyet');
+  // Route::get('/chi-tiet-nckh/{id}', [ChiTietNCKHController::class, 'show'])->name('chi-tiet-nckh');
+  Route::get('/duyet-nckh/{id}/{value}', [XetDuyetNCKHController::class, 'approve'])->name('duyet-nckh');
+});
+
+Route::prefix('quan-ly-giang-vien')->group(function(){
+  Route::get('/', [QuanLyGVController::class, 'list']);
+  Route::post('/', [QuanLyGVController::class, 'listwithMaDot'])->name('quan-ly-gv');
 });

@@ -160,7 +160,7 @@
                             <th>Mã Học Hàm</th>
                             <th>Tên Học Hàm</th>
                             <th>Điểm Định Mức Học Hàm</th>
-                            <th>Mã Đợt</th>
+                            <th>Đợt</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -174,7 +174,7 @@
                               <td>{{$dshh['MaHocHam']}}</td>
                               <td>{{$dshh['TenHocHam']}}</td>
                               <td>{{$dshh['DiemDMHH']}}</td>
-                              <td>{{$ThongTinDot['MaDot']}}</td>
+                              <td>Từ {{ date('d-m-Y', strtotime($ThongTinDot['ThoiGianBatDau'])) }} đến {{ date('d-m-Y', strtotime($ThongTinDot['ThoiGianKetThuc'])) }}</td>
                             </tr>
                             @php
                             $i++;

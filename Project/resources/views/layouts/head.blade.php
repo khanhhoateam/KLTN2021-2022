@@ -18,7 +18,7 @@
 <!-- iCheck -->
 <link href="css/green.css" rel="stylesheet">
 
-<link href="css/AutocompleteForm.css" rel="stylesheet">
+{{-- <link href="css/AutocompleteForm.css" rel="stylesheet"> --}}
 
 <!-- bootstrap-progressbar -->
 <link href="css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
@@ -33,8 +33,3 @@
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-
-<!-- Theme style -->
-{{-- <link rel="stylesheet" href="dist/css/adminlte.min.css"> --}}

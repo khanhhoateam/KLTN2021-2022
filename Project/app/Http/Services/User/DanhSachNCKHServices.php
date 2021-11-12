@@ -18,8 +18,6 @@ class DanhSachNCKHServices {
     $tenGV = User::where('id', $id)->value('name');
     //Lay MaGiangVien tu bang GiangVien theo TenGiangVien
     $IdGV = GiangVien::where('TenGiangVien', $tenGV)->value('MaGiangVien');
-    //Lay MaHD theo MaGiangVien ke khai
-    $mahd = KhaiBaoNCKH::where('GVKeKhai', $IdGV)->orderByDesc('MaHoatDong')->value('MaHoatDong');
     //Lay cac thuoc tinh hoat dong
     $hd = KhaiBaoNCKH::where('GVKeKhai', $IdGV)->orderByDesc('MaHoatDong')->get();
     // dd($tenGV, $IdGV, $mahd, $hd);

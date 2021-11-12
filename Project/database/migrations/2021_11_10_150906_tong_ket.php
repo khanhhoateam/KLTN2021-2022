@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class LoaiMienGiamTam extends Migration
+class TongKet extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class LoaiMienGiamTam extends Migration
      */
     public function up()
     {
-        Schema::create('LoaiMienGiamTam', function (Blueprint $table) {
-            $table->id('MaMienGiam');
-            $table->string('TenMienGiam');
-            $table->integer('DiemMienGiam');
-            $table->float('TyLeMienGiam', 3, 2);
+        Schema::create('TongKet', function (Blueprint $table) {
+            $table->id('IDTongKet');
+            $table->unsignedBigInteger('MaGiangVien');
+            $table->foreign('MaGiangVien')->references('MaGiangVien')->on('giangvien')->onDelete('cascade');
             $table->unsignedBigInteger('MaDot');
-            $table->integer('Active');
             $table->foreign('MaDot')->references('MaDot')->on('dotkekhai')->onDelete('cascade');
+            $table->integer('DiemDM');
+            $table->integer('DiemDanhGia');
+            $table->integer('Enable');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ class LoaiMienGiamTam extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('LoaiMienGiam');
+        Schema::dropIfExists('TongKet');
     }
 }
