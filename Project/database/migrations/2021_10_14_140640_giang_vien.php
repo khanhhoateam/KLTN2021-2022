@@ -22,6 +22,7 @@ class GiangVien extends Migration
             $table->unsignedBigInteger('MaHocHam');
             $table->foreign('MaHocHam')->references('MaHocHam')->on('hocham')->onDelete('cascade');
             $table->foreign('UserID')->references('id')->on('users')->onDelete('cascade');
+            $table->Integer('Active');
             $table->timestamps();
         });
     }

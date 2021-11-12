@@ -5,17 +5,19 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MienGiamTam extends Model
+class TongKet extends Model
 {
     use HasFactory;
 
-    public $table = "LoaiMienGiamTam";
+    public $table = "TongKet";
     
+    public $primaryKey = "IDTongKet";
+
     protected $fillable = [
-        'TenMienGiam',
-        'DiemMienGiam',
-        'TyLeMienGiam',
+        'MaGiangVien',
         'MaDot',
-        'Active'
+        'DiemDM',
+        'DiemDanhGia',
+        'Enable'
     ];
 }
