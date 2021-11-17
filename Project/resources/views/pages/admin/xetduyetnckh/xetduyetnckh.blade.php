@@ -43,9 +43,9 @@
               <td>{{$hd['TrangThai']}}</td>
               <td>{{$hd['Diem']}}</td>
               <td>
-                <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i>Xem</a>
-                <a href="{{route('duyet-nckh', ['id' => $hd['MaHoatDong'], 'value' => '0'])}}" class="btn btn-success"><i class="fa fa-trash-o"></i>Duyệt</a>
-                <a href="{{route('duyet-nckh', ['id' => $hd['MaHoatDong'], 'value' => '1'])}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Không Duyệt</a>
+                <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Xem</a>
+                <a href="{{route('duyet-nckh', ['id' => $hd['MaHoatDong'], 'value' => '0'])}}" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Duyệt</a>
+                <a href="{{route('duyet-nckh', ['id' => $hd['MaHoatDong'], 'value' => '1'])}}" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Không Duyệt</a>
               </td>
           </tr>
           @php

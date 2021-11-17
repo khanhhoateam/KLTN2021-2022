@@ -81,7 +81,7 @@ class KhaiBaoNCKHServices {
     }
     
   }
-
+  
   public function temporary_table($request){
     $magiangvien = GiangVien::where('TenGiangVien', $request['ten-gv-tg'])
                     ->value('MaGiangVien');

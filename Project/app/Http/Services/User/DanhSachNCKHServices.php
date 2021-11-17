@@ -19,7 +19,7 @@ class DanhSachNCKHServices {
     //Lay MaGiangVien tu bang GiangVien theo TenGiangVien
     $IdGV = GiangVien::where('TenGiangVien', $tenGV)->value('MaGiangVien');
     //Lay cac thuoc tinh hoat dong
-    $hd = KhaiBaoNCKH::where('GVKeKhai', $IdGV)->orderByDesc('MaHoatDong')->get();
+    $hd = KhaiBaoNCKH::where('GVKeKhai', $IdGV)->where('TrangThai', 'Chờ duyệt')->orderByDesc('MaHoatDong')->get();
     // dd($tenGV, $IdGV, $mahd, $hd);
     return $hd;
   }

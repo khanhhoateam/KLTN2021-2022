@@ -23,9 +23,9 @@ class TheLoaiServices {
 
   public function temporary_table($request){
     TheLoaiTam::create([
-      'TenTheLoai' => $request->input('Ten-the-loai'),
+      'TenTheLoai' => $request->input('Ten_the_loai'),
       'DiemNC' => $request->input('Diem'),
-      'MaDot' => $request->input('Ma-dot'),
+      'MaDot' => $request->input('Ma_dot'),
       'Active' => $request->input('Active')
   ]);
   }

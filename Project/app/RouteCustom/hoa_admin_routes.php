@@ -44,6 +44,8 @@ Route::prefix('mo-dot-ke-khai')->group(function(){
 
   Route::post('/', [DotKeKhaiController::class, 'store']);
 
+  Route::get('dong-dot-ke-khai/{id}', [DotKeKhaiController::class, 'close'])->name('dong-dkk');
+
 });
 
 Route::prefix('thiet-lap-the-loai')->group(function(){

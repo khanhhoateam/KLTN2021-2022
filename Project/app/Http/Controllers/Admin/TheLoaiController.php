@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Services\Admin\TheLoaiServices;
 use App\Http\Services\Admin\DotKeKhaiServices;
+use App\Http\Requests\Admin\TheLoaiRequest;
+use Session;
 
 class TheLoaiController extends Controller
 {
@@ -36,8 +38,9 @@ class TheLoaiController extends Controller
     }
 
 
-    public function temporary_table (Request $request) {
+    public function temporary_table (TheLoaiRequest $request) {
         $this->TheLoaiServices->temporary_table($request);
+        Session::flash('success', 'Đã thêm Thể loại vào bảng tạm lưu !');
         return redirect()->back();
     }
 
@@ -53,6 +56,7 @@ class TheLoaiController extends Controller
                 $this->TheLoaiServices->store($result);
                 $this->TheLoaiServices->update_temp_table($result["MaTheLoai"]);
             }
+            Session::flash('success', 'Thêm Thể loại thành công !');
         }
         return redirect()->back();
     }

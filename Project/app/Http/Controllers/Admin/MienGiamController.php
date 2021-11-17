@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Services\Admin\MienGiamServices;
 use App\Http\Services\Admin\DotKeKhaiServices;
+use App\Http\Requests\Admin\MienGiamRequest;
+use Session;
 
 class MienGiamController extends Controller
 {
@@ -36,8 +38,9 @@ class MienGiamController extends Controller
     }
 
 
-    public function temporary_table (Request $request) {
+    public function temporary_table (MienGiamRequest $request) {
         $this->MienGiamServices->temporary_table($request);
+        Session::flash('success', 'Đã thêm Miễn giảm vào bảng tạm lưu !');
         return redirect()->back();
     }
 
@@ -53,6 +56,7 @@ class MienGiamController extends Controller
                 $this->MienGiamServices->store($result);
                 $this->MienGiamServices->update_temp_table($result["MaMienGiam"]);
             }
+            Session::flash('success', 'Thêm Miễn giảm thành công !');
         }
         return redirect()->back();
     }

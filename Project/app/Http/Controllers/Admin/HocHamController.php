@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Services\Admin\HocHamServices;
 use App\Http\Services\Admin\DotKeKhaiServices;
+use App\Http\Requests\Admin\HocHamRequest;
+use Session;
 
 class HocHamController extends Controller
 {
@@ -36,8 +38,9 @@ class HocHamController extends Controller
     }
 
 
-    public function temporary_table (Request $request) {
+    public function temporary_table (HocHamRequest $request) {
         $this->HocHamServices->temporary_table($request);
+        Session::flash('success', 'Đã thêm Học hàm vào bảng tạm lưu !');
         return redirect()->back();
     }
 
@@ -53,6 +56,7 @@ class HocHamController extends Controller
                 $this->HocHamServices->store($result);
                 $this->HocHamServices->update_temp_table($result["MaHocHam"]);
             }
+            Session::flash('success', 'Thêm Học hàm thành công !');
         }
         return redirect()->back();
     }

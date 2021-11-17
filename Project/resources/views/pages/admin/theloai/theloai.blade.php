@@ -53,15 +53,16 @@
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="create">
                 <!-- Content -->
                 <div class="x_content">
+                  @include('layouts.alert')
                   <div id="wizard" class="form_wizard wizard_horizontal" style="margin-top: 30px;">
                     <form method="POST" action="{{route('bang-luu-tam-tl')}}" class="form-horizontal form-label-left">
                       @csrf
-                      <input class="form-control" type="hidden" name="Ma-dot" value="{{$ThongTinDot['MaDot']}}">
+                      <input class="form-control" type="hidden" name="Ma_dot" value="{{$ThongTinDot['MaDot']}}">
                       <input class="form-control" type="hidden" name="Active" value="1">
                       <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Chọn Thể Loại<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
-                          <select id="heard" name="Ten-the-loai" class="form-control" required>
+                          <select id="heard" name="Ten_the_loai" class="form-control" required>
                             <option value="">Chọn..</option>
                             @foreach($TheLoai as $tl)
                             <option value="{{$tl['TenTheLoai']}}">{{$tl['TenTheLoai']}}</option>
@@ -86,12 +87,11 @@
                             <h2>BẢNG TẠM LƯU <small>CÁC THỂ LOẠI KHỞI TẠO</small></h2>
                             <div class="clearfix"></div>
                           </div>
-                          <div class="x_content">
+                          <div class="x_content" style="margin:auto">
                             <table class="table table-striped projects">
                               <thead>
                                 <tr>
                                   <th style="width: 1%">STT</th>
-                                  <th>Mã Thể Loại</th>
                                   <th>Tên Thể Loại</th>
                                   <th>Điểm Định Mức Thể Loại</th>
                                   <th  style="width: 10%">Cài Đặt</th>
@@ -105,7 +105,6 @@
                                   @foreach ($BangTam as $tam)
                                     <tr>
                                       <td>{{$i}}</td>
-                                      <td>{{$tam['MaTheLoai']}}</td>
                                       <td>{{$tam['TenTheLoai']}}</td>
                                       <td>{{$tam['DiemNC']}}</td>
                                       <td>
@@ -120,7 +119,7 @@
                               </tbody>
                               <tfoot>
                                 <tr>
-                                  <td colspan="4"></td>
+                                  <td colspan="3"></td>
                                   <td>
                                     @if(count($BangTam) > 0)
                                       <a href="{{route('luu-tl')}}" class="btn btn-success btn-xs">
@@ -142,13 +141,13 @@
                 <div class="col-md-12 col-sm-12  ">
                   <div class="x_panel">
                     <div class="x_title">
-                      <div class="col-md-2 col-sm-2">
+                      {{-- <div class="col-md-2 col-sm-2">
                         <select id="heard" class="form-control" required>
                           <option value="">Chọn đợt kê khai</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                         </select>
-                      </div>
+                      </div> --}}
                       <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
@@ -156,10 +155,9 @@
                         <thead>
                           <tr>
                             <th>STT</th>
-                            <th>Mã Thể Loại</th>
                             <th>Tên Thể Loại</th>
                             <th>Điểm Định Mức Thể Loại</th>
-                            <th>Mã Đợt</th>
+                            <th>Đợt</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -170,10 +168,11 @@
                             @foreach($DanhSachTheLoai as $dstl)
                             <tr>
                               <td>{{$i}}</td>
-                              <td>{{$dstl['MaTheLoai']}}</td>
                               <td>{{$dstl['TenTheLoai']}}</td>
                               <td>{{$dstl['DiemNC']}}</td>
-                              <td>{{$ThongTinDot['MaDot']}}</td>
+                              <td>
+                                Từ {{ date('d-m-Y', strtotime($ThongTinDot['ThoiGianBatDau'])) }} đến {{ date('d-m-Y', strtotime($ThongTinDot['ThoiGianKetThuc'])) }}
+                              </td>
                             </tr>
                             @php
                             $i++;

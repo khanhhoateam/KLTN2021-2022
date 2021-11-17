@@ -43,40 +43,10 @@
               <div class="tab-pane fade" id="profile-tab" role="tabpanel" aria-labelledby="list">
                 <!-- Content -->
                 @if(!(empty($dkkht)))
+               
                 <div class="x_content">
                   <div id="wizard" class="form_wizard wizard_horizontal" style="margin-top: 30px;">
                     <!-- Char -->
-                    @php
-                      $tong = count($gv);
-                      $xs = 0;
-                      $gioi = 0;
-                      $kha = 0;
-                      $dat = 0;
-                      $khongdat = 0;
-                    @endphp
-                    @foreach ($gv as $gv2)
-                      @php
-                        $kq = TongKetServices::getDiemDanhGia($gv2['MaGiangVien']);
-                        if($kq < 0) {
-                          $khongdat++;
-                        } elseif ($kq <= 50 && $kq >=0) {
-                          $dat++;
-                        } elseif ($kq >50 && $kq <= 100 ) {
-                          $kha++;
-                        } elseif ($kq >100 && $kq <= 200 ) {
-                          $gioi++;
-                        } elseif ($kq >200 ) {
-                          $xs++;
-                        }
-                      @endphp
-                    @endforeach
-                    @php
-                      $TiLe_xs = round($xs/$tong, 2)*100;
-                      $TiLe_gioi = round($gioi/$tong, 2)*100;
-                      $TiLe_kha = round($kha/$tong, 2)*100;
-                      $TiLe_dat = round($dat/$tong, 2)*100;
-                      $TiLe_khongdat = 100 - $TiLe_xs - $TiLe_gioi - $TiLe_kha - $TiLe_dat;
-                    @endphp
                     <div class="col-md-5 col-sm-5 ">
                       <div class="x_panel tile fixed_height_320 overflow_hidden">
                         <div class="x_title">
@@ -120,31 +90,31 @@
                                     <td>
                                       <p><i class="fa fa-square blue"></i>Xuất Sắc</p>
                                     </td>
-                                    <td>{{$TiLe_xs}}%</td>
+                                    <td>{{$thongke['Ty Le Xuat Sac']}}%</td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <p><i class="fa fa-square green"></i>Giỏi</p>
                                     </td>
-                                    <td>{{$TiLe_gioi}}%</td>
+                                    <td>{{$thongke['Ty Le Gioi']}}%</td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <p><i class="fa fa-square purple"></i>Khá </p>
                                     </td>
-                                    <td>{{$TiLe_kha}}%</td>
+                                    <td>{{$thongke['Ty Le Kha']}}%</td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <p><i class="fa fa-square aero"></i>Đạt </p>
                                     </td>
-                                    <td>{{$TiLe_dat}}%</td>
+                                    <td>{{$thongke['Ty Le Dat']}}%</td>
                                   </tr>
                                   <tr>
                                     <td>
                                       <p><i class="fa fa-square red"></i>Không Đạt </p>
                                     </td>
-                                    <td>{{$TiLe_khongdat}}%</td>
+                                    <td>{{$thongke['Ty Le Khong Dat']}}%</td>
                                   </tr>
                                 </tbody></table>
                               </td>

@@ -18,14 +18,14 @@ class HocHamServices {
   }
 
   public function list($madot){
-    return HocHam::where('MaDot', $madot)->get();
+    return HocHam::where('MaDot', $madot)->orderByDesc('MaHocHam')->get();
   }
 
   public function temporary_table($request){
     HocHamTam::create([
-      'TenHocHam' => $request->input('Ten-hoc-ham'),
+      'TenHocHam' => $request->input('Ten_hoc_ham'),
       'DiemDMHH' => $request->input('Diem'),
-      'MaDot' => $request->input('Ma-dot'),
+      'MaDot' => $request->input('Ma_dot'),
       'Active' => $request->input('Active')
   ]);
   }
