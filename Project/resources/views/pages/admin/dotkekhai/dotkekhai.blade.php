@@ -10,12 +10,12 @@
       </div>
       <div class="title_right">
         <div class="col-md-5 col-sm-5   form-group pull-right top_search">
-          <div class="input-group">
+          {{-- <div class="input-group">
             <input type="text" class="form-control" placeholder="Nhập từ khóa...">
             <span class="input-group-btn">
               <button class="btn btn-secondary" type="button">Tìm!</button>
             </span>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>
@@ -53,6 +53,7 @@
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="create">
                 <!-- Content -->
                 <div class="x_content">
+                  @include('layouts.alert')
                   <div id="wizard" class="form_wizard wizard_horizontal" style="margin-top: 30px;">
                     <form method="POST" action="" class="form-horizontal form-label-left">
                       @csrf
@@ -87,12 +88,14 @@
                       <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                      <table class="table table-striped">
+                      <table class="table table-striped" style="text-align: center">
                         <thead>
                           <tr>
-                            <th>Mã Đợt</th>
+                            <th>STT</th>
                             <th>Ngày Bắt Đầu</th>
                             <th>Ngày Kết Thúc</th>
+                            <th>Trạng thái</th>
+                            <th>Chức năng</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -101,9 +104,21 @@
                           @endphp
                           @foreach($DanhSachDKK as $ds)
                           <tr>
-                            <th scope="row">{{$ds['MaDot']}}</th>
+                            <th scope="row">{{$i}}</th>
                             <td>{{ date('d-m-Y', strtotime($ds['ThoiGianBatDau'])) }}</td>
                             <td>{{ date('d-m-Y', strtotime($ds['ThoiGianKetThuc'])) }}</td>
+                            @if ($ds['Enable'] == 0)
+                              <td>Đã đóng</td>
+                            @elseif ($ds['Enable'] == 1)
+                              <td>Đang mở</td>
+                            @endif
+                            
+                            @if ($ds['Enable'] == 1)
+                              <td><a href="{{route('dong-dkk', ['id' => $ds['MaDot']])}}" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Đóng Đợt</a></td>
+                            @else
+                              <td></td>
+                            @endif
+                  
                           </tr>
                           @php
                           $i++;

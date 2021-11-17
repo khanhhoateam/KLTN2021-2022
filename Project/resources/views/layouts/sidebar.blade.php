@@ -7,7 +7,7 @@
     <!-- menu profile quick info -->
     <div class="profile clearfix">
       <div class="profile_pic">
-        <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+        <img src="{{ Auth::user()->avatar }}" alt="..." class="img-circle profile_img">
       </div>
       <div class="profile_info">
         <span>Xin Chào,</span>
@@ -40,7 +40,6 @@
           </li>
           <li><a><i class="fa fa-check-square-o"></i> Xét Duyệt <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="#"> Kê Khai Miễn Giảm </a></li>
               <li><a href="#"> Hoạt Động NCKH </a></li>
             </ul>
           </li>

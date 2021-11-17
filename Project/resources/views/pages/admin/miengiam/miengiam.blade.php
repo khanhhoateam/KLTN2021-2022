@@ -53,15 +53,16 @@
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="create">
                 <!-- Content -->
                 <div class="x_content">
+                  @include('layouts.alert')
                   <div id="wizard" class="form_wizard wizard_horizontal" style="margin-top: 30px;">
                     <form method= "POST" action="{{route('bang-luu-tam-mg')}}" class="form-horizontal form-label-left">
                       @csrf
-                      <input class="form-control" type="hidden" name="Ma-dot" value="{{$ThongTinDot['MaDot']}}">
+                      <input class="form-control" type="hidden" name="Ma_dot" value="{{$ThongTinDot['MaDot']}}">
                       <input class="form-control" type="hidden" name="Active" value="1">
                       <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Chọn Miễn Giảm<span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
-                          <select class="form-control" name="Ten-mien-giam" required>
+                          <select class="form-control" name="Ten_mien_giam" required>
                             <option value="">Chọn ... </option>
                             @foreach($TenMienGiam as $miengiam)
                             <option value="{{$miengiam['TenMienGiam']}}">{{$miengiam['TenMienGiam']}}</option>
@@ -148,13 +149,13 @@
                 <div class="col-md-12 col-sm-12  ">
                   <div class="x_panel">
                     <div class="x_title">
-                      <div class="col-md-2 col-sm-2">
+                      {{-- <div class="col-md-2 col-sm-2">
                         <select id="heard" class="form-control" required>
                           <option value="">Chọn đợt kê khai</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                         </select>
-                      </div>
+                      </div> --}}
                       <div class="clearfix"></div>
                     </div>
                     <div class="x_content">

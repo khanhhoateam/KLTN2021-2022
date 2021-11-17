@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\DotKeKhai;
 
-
 class DotKeKhaiServices {
 
   public function list(){
@@ -42,5 +41,52 @@ class DotKeKhaiServices {
     $dkk = DotKeKhai::find($id);
     $gv = $dkk->GiangVien->sortDesc();
     return $gv;
+  }
+
+  public function thongkegv($id){
+    $gv = DotKeKhai::find($id)->GiangVien->sortDesc();
+    $tong = count($gv);
+    $xs = 0;
+    $gioi = 0;
+    $kha = 0;
+    $dat = 0;
+    $khongdat = 0;
+    foreach($gv as $gv2) {
+      $kq = TongKetServices::getDiemDanhGia($gv2['MaGiangVien']);
+      if($kq < 0) {
+        $khongdat++;
+      } elseif ($kq <= 50 && $kq >=0) {
+        $dat++;
+      } elseif ($kq >50 && $kq <= 100 ) {
+        $kha++;
+      } elseif ($kq >100 && $kq <= 200 ) {
+        $gioi++;
+      } elseif ($kq >200 ) {
+        $xs++;
+      }
+    }
+    $TiLe_xs = round($xs/$tong, 2)*100;
+    $TiLe_gioi = round($gioi/$tong, 2)*100;
+    $TiLe_kha = round($kha/$tong, 2)*100;
+    $TiLe_dat = round($dat/$tong, 2)*100;
+    $TiLe_khongdat = 100 - $TiLe_xs - $TiLe_gioi - $TiLe_kha - $TiLe_dat;
+    $thongkegv = collect(
+      ['Tong' => $tong,
+      'Xuat Sac' => $xs,
+      'Gioi' => $gioi,
+      'Kha' => $kha,
+      'Dat' => $dat,
+      'Khong Dat' => $khongdat,
+      'Ty Le Xuat Sac' => $TiLe_xs,
+      'Ty Le Gioi' => $TiLe_gioi,
+      'Ty Le Kha' => $TiLe_kha,
+      'Ty Le Dat' => $TiLe_dat,
+      'Ty Le Khong Dat' => $TiLe_khongdat],
+    );
+    return $thongkegv;
+  }
+
+  public function updateEnable($id){
+    return DotKeKhai::where('MaDot', $id)->update(['Enable' => '0']);
   }
 }
