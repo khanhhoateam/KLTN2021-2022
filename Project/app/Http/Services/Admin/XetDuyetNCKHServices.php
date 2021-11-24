@@ -11,6 +11,9 @@ class XetDuyetNCKHServices {
   public function list(){
     return KhaiBaoNCKH::where('TrangThai', 'Chờ duyệt')->orderByDesc('MaHoatDong')->get();
   }
+  public function listAll(){
+    return KhaiBaoNCKH::orderByDesc('MaHoatDong')->get();
+  }
   public static function listThamGia($id) {
     $thamgia = KhaiBaoNCKH::find($id)->ChiTietHD;
     return $thamgia;

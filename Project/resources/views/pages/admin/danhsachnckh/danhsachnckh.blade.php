@@ -18,7 +18,6 @@
           <th>Thành Phần Tham Gia</th>
           <th>Trạng thái</th>
           <th>Điểm Nghiên Cứu</th>
-          <th>Hành Động</th>
         </tr>
       </thead>
         @php
@@ -37,17 +36,13 @@
                   //Dem so giang vien tham gia trong hoat dong
                   $count_gvtg = count($thamgia);
                   for ($j=0; $j < $count_gvtg; $j++) { 
-                    echo GiangVienServices::listByID($thamgia[$j]["MaGiangVien"]). " số điểm nhận: ". ChiTietNCKHServices::GetDiemNC($hd['MaHoatDong'], $thamgia[$j]["MaGiangVien"]). '<br>';
+                     echo GiangVienServices::listByID($thamgia[$j]["MaGiangVien"]). " số điểm nhận: ". ChiTietNCKHServices::GetDiemNC($hd['MaHoatDong'], $thamgia[$j]["MaGiangVien"]). '<br>';
                   }
                 @endphp
               </td>
               <td>{{$hd['TrangThai']}}</td>
               <td>{{$hd['Diem']}}</td>
-              <td>
-                <a href="{{ route('chi-tiet-nckh', ['id' => $hd['MaHoatDong']]) }}" class="btn btn-primary btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Xem</a>
-                <a href="{{route('duyet-nckh', ['id' => $hd['MaHoatDong'], 'value' => '0'])}}" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Duyệt</a>
-                <a href="{{route('duyet-nckh', ['id' => $hd['MaHoatDong'], 'value' => '1'])}}" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> Không Duyệt</a>
-              </td>
+              
           </tr>
           @php
             $i++;

@@ -8,6 +8,8 @@ use App\Models\User\KhaiBaoNCKH;
 use App\Models\User\ChiTietTam;
 use App\Models\User\ChiTietHD;
 use App\Models\User\GiangVien;
+use App\Models\Admin\TheLoai;
+use App\Models\Admin\VaiTro;
 use App\Models\User;
 use Illuminate\Support\Arr;
 
@@ -35,16 +37,23 @@ class KhaiBaoNCKHServices {
           'TapChi' => $request['tap-chi'],
           'SoPhatHanh' => $request['so-phat-hanh'],
           'ChuanDanhMuc' => $request['chuan-danh-muc'],
-          'Diem' => '0'
+          'Diem' => TheLoai::where("MaTheLoai", $request['the-loai'])->value('DiemNC')
         ]);
+        // Tinh diem NC cua cac thanh phan tham gia o day
         $hoatdongcuoi = KhaiBaoNCKH::select('MaHoatDong')->orderBy('MaHoatDong', 'DESC')->first();
-        foreach($giangvien as $gv){
+        foreach($giangvien as $giangvien){
           ChiTietHD::create([
             'MaHoatDong' => $hoatdongcuoi['MaHoatDong'],
-            'MaGiangVien' => $gv['MaGiangVien'],
-            'GioNC' => 1,
-            'MaVaiTro' => $gv['MaVaiTro']
+            'MaGiangVien' => $giangvien['MaGiangVien'],
+            'GioNC' => 0,
+            'MaVaiTro' => $giangvien['MaVaiTro']
           ]);
+          ChiTietTam::where('MaGiangVien', $giangvien['MaGiangVien'])->update(['Enable' => 0]);
+        }
+        $cthd = ChiTietHD::where('MaHoatDong', $hoatdongcuoi['MaHoatDong'])->get();
+        foreach($cthd as $cthd) {
+          $gio_nc = $this->TinhDiemNC($hoatdongcuoi['MaHoatDong'], $request['the-loai'], $cthd['MaVaiTro']);
+          ChiTietHD::where('IDHoatDong', $cthd['IDHoatDong'])->update(['GioNC' => $gio_nc]);
         }
     }
     else{
@@ -66,18 +75,23 @@ class KhaiBaoNCKHServices {
           'TapChi' => '0',
           'SoPhatHanh' => '0',
           'ChuanDanhMuc' => '0',
-          'Diem' => '0'
+          'Diem' => TheLoai::where("MaTheLoai", $request['the-loai'])->value('DiemNC')
         ]);
         $hoatdongcuoi = KhaiBaoNCKH::select('MaHoatDong')->orderBy('MaHoatDong', 'DESC')->first();
-        foreach($giangvien as $gv){
+        foreach($giangvien as $giangvien){
           ChiTietHD::create([
             'MaHoatDong' => $hoatdongcuoi['MaHoatDong'],
-            'MaGiangVien' => $gv['MaGiangVien'],
-            'GioNC' => 1,
-            'MaVaiTro' => $gv['MaVaiTro']
+            'MaGiangVien' => $giangvien['MaGiangVien'],
+            'GioNC' => 0,
+            'MaVaiTro' => $giangvien['MaVaiTro']
           ]);
-          ChiTietTam::where('MaGiangVien', $gv['MaGiangVien'])->update(['Enable' => 0]);
+          ChiTietTam::where('MaGiangVien', $giangvien['MaGiangVien'])->update(['Enable' => 0]);
         } 
+        $cthd = ChiTietHD::where('MaHoatDong', $hoatdongcuoi['MaHoatDong'])->get();
+        foreach($cthd as $cthd) {
+          $gio_nc = $this->TinhDiemNC($hoatdongcuoi['MaHoatDong'], $request['the-loai'], $cthd['MaVaiTro']);
+          ChiTietHD::where('IDHoatDong', $cthd['IDHoatDong'])->update(['GioNC' => $gio_nc]);
+        }
     }
     
   }
@@ -86,7 +100,7 @@ class KhaiBaoNCKHServices {
     $magiangvien = GiangVien::where('TenGiangVien', $request['ten-gv-tg'])
                     ->value('MaGiangVien');
     $tengiangvien = GiangVien::where('TenGiangVien', $request['ten-gv-tg'])
-                    ->value('TenGiangVien');;
+                    ->value('TenGiangVien');
     ChiTietTam::create([
       'MaGiangVien' => $magiangvien,
       'TenGiangVien' => $tengiangvien,
@@ -106,4 +120,16 @@ class KhaiBaoNCKHServices {
   public function listTrangThai(){
     return KhaiBaoNCKH::distinct()->get('TrangThai');
   }
+
+  public function TinhDiemNC($mahd, $matheloai, $mavaitro){
+    if(count(ChiTietHD::where('MaHoatDong', $mahd)->get()) == 1) {
+      $diem = TheLoai::where("MaTheLoai", $matheloai)->value('DiemNC');
+    }else {
+      $sl_tg = count(ChiTietHD::where('MaHoatDong', $mahd)
+                            ->where('MaVaiTro', $mavaitro)->get());
+      $diem = (TheLoai::where("MaTheLoai", $matheloai)->value('DiemNC')*VaiTro::where("MaVaiTro", $mavaitro)->value('TiLe'))/$sl_tg;
+    }
+    return (int) $diem;
+  }
+  
 }

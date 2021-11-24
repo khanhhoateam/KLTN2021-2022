@@ -11,5 +11,8 @@ class VaiTroServices {
   public function list(){
     return VaiTro::get();
   }
-
+  public static function getVaiTro($id) {
+    $result = VaiTro::where('MaVaiTro', $id)->value('TenVaiTro');
+    return $result;
+  }
 }

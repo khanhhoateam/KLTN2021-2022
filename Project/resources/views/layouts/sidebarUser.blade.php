@@ -32,7 +32,7 @@
               <li><a href="#">Giới Thiệu</a></li>
             </ul>
           </li>
-          <li><a href="#"><i class="fa fa-edit"></i> Quản lý hồ sơ</a></li>
+          <li><a href="{{ route('ho-so') }}"><i class="fa fa-edit"></i> Quản lý hồ sơ</a></li>
           <li><a href="{{route('nckh_gvtg')}}"><i class="fa fa-plus-square"></i> Kê khai hoạt động </a></li>
           <li><a href="{{route('ds-nckh')}}"><i class="fa fa-table"></i> Danh sách NCKH kê khai</a></li>
         </ul>
