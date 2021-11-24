@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\User\KhaiBaoNCKHController;
 use App\Http\Controllers\User\DanhSachNCKHController;
+use App\Http\Controllers\User\HoSoController;
 
 //User
 Route::prefix('khai-bao-nckh')->group(function(){
@@ -21,4 +22,8 @@ Route::prefix('khai-bao-nckh')->group(function(){
 
 Route::prefix('danh-sach-nckh')->group(function(){
   Route::get('/', [DanhSachNCKHController::class, 'list'])->name('ds-nckh');
+});
+
+Route::prefix('ho-so')->group(function(){
+  Route::get('/', [HoSoController::class, 'profile'])->name('ho-so');
 });

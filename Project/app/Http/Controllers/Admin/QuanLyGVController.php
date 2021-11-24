@@ -17,7 +17,6 @@ class QuanLyGVController extends Controller
     }
 
     public function list() {
-        //dd($this->DotKeKhaiServices->thongkegv($request->input('dkk')));
         return view('pages.admin.quanlygiangvien.quanlygiangvien', [
             'title' => 'QUẢN LÝ GIẢNG VIÊN',
             'dkk' => $this->DotKeKhaiServices->list(), //dot ke khai
@@ -25,13 +24,17 @@ class QuanLyGVController extends Controller
     }
 
     public function listwithMaDot(Request $request){
-        //dd($this->DotKeKhaiServices->thongkegv($request->input('dkk')));
+        if(count($this->DotKeKhaiServices->ds_gv($request->input('dkk'))) != 0) {
+            $thongke = $this->DotKeKhaiServices->thongkegv($request->input('dkk'));
+        }else {
+            $thongke = [];
+        }
         return view('pages.admin.quanlygiangvien.quanlygiangvien', [
             'title' => 'QUẢN LÝ GIẢNG VIÊN',
             'gv' => $this->DotKeKhaiServices->ds_gv($request->input('dkk')), //danh sach giang vien trong dkk
             'dkk' => $this->DotKeKhaiServices->list(), //tat ca dot ke khai
             'dkkht' => $this->DotKeKhaiServices->listByID($request->input('dkk')), //dot ke khai hien tai
-            'thongke' => $this->DotKeKhaiServices->thongkegv($request->input('dkk'))
+            'thongke' => $thongke
         ]);
     }
 

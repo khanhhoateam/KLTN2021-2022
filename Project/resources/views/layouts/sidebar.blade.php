@@ -40,7 +40,7 @@
           </li>
           <li><a><i class="fa fa-check-square-o"></i> Xét Duyệt <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="#"> Hoạt Động NCKH </a></li>
+              <li><a href="{{ route('xet-duyet') }}"> Hoạt Động NCKH </a></li>
             </ul>
           </li>
         </ul>
@@ -49,7 +49,7 @@
         <h3>QUẢN LÝ</h3>
         <ul class="nav side-menu">
           <li><a href="{{route('quan-ly-gv')}}"><i class="fa fa-graduation-cap"></i> Giảng Viên </a></li>
-          <li><a href="{{route('xet-duyet')}}"><i class="fa fa-paint-brush"></i> Hoạt Động NCKH </a></li>
+          <li><a href="{{ route('danh-sach-nckh') }}"><i class="fa fa-paint-brush"></i> Hoạt Động NCKH </a></li>
         </ul>
       </div>
 

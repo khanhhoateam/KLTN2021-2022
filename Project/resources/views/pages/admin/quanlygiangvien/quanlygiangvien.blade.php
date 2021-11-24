@@ -43,89 +43,92 @@
               <div class="tab-pane fade" id="profile-tab" role="tabpanel" aria-labelledby="list">
                 <!-- Content -->
                 @if(!(empty($dkkht)))
-               
-                <div class="x_content">
-                  <div id="wizard" class="form_wizard wizard_horizontal" style="margin-top: 30px;">
-                    <!-- Char -->
-                    <div class="col-md-5 col-sm-5 ">
-                      <div class="x_panel tile fixed_height_320 overflow_hidden">
-                        <div class="x_title">
-                          <h2>Biểu Đồ Tỉ Lệ Giảng Viên Đạt Định Mức</h2>
-                          <ul class="nav navbar-right panel_toolbox">
-                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                            </li>
-                            <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                {{-- Setting feature --}}
-                              </div>
-                            </li>
-                            <li><a class="close-link"><i class="fa fa-close"></i></a>
-                            </li>
-                          </ul>
-                          <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                          <table class="" style="width:100%">
-                            <tbody><tr>
-                              <th style="width:37%;">
-                                <p></p>
-                              </th>
-                              <th>
-                                <div class="col-lg-9 col-md-9 col-sm-9 ">
-                                  <p class="">Xếp loại</p>
+                  @if (empty($thongke))
+
+                  @else
+                  <div class="x_content">
+                    <div id="wizard" class="form_wizard wizard_horizontal" style="margin-top: 30px;">
+                      <!-- Char -->
+                      <div class="col-md-5 col-sm-5 ">
+                        <div class="x_panel tile fixed_height_320 overflow_hidden">
+                          <div class="x_title">
+                            <h2>Biểu Đồ Tỉ Lệ Giảng Viên Đạt Định Mức</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li>
+                              <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  {{-- Setting feature --}}
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 ">
-                                  <p class="">Tỉ lệ</p>
-                                </div>
-                              </th>
-                            </tr>
-                            <tr>
-                              <td><iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; inset: 0px;"></iframe>
-                                <canvas class="canvasDoughnut" height="175" width="175" style="margin: 15px 10px 10px 0px; width: 140px; height: 140px;"></canvas>
-                              </td>
-                              <td>
-                                <table class="tile_info">
-                                  <tbody><tr>
-                                    <td>
-                                      <p><i class="fa fa-square blue"></i>Xuất Sắc</p>
-                                    </td>
-                                    <td>{{$thongke['Ty Le Xuat Sac']}}%</td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <p><i class="fa fa-square green"></i>Giỏi</p>
-                                    </td>
-                                    <td>{{$thongke['Ty Le Gioi']}}%</td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <p><i class="fa fa-square purple"></i>Khá </p>
-                                    </td>
-                                    <td>{{$thongke['Ty Le Kha']}}%</td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <p><i class="fa fa-square aero"></i>Đạt </p>
-                                    </td>
-                                    <td>{{$thongke['Ty Le Dat']}}%</td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      <p><i class="fa fa-square red"></i>Không Đạt </p>
-                                    </td>
-                                    <td>{{$thongke['Ty Le Khong Dat']}}%</td>
-                                  </tr>
-                                </tbody></table>
-                              </td>
-                            </tr>
-                          </tbody></table>
+                              </li>
+                              <li><a class="close-link"><i class="fa fa-close"></i></a>
+                              </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content">
+                            <table class="" style="width:100%">
+                              <tbody><tr>
+                                <th style="width:37%;">
+                                  <p></p>
+                                </th>
+                                <th>
+                                  <div class="col-lg-9 col-md-9 col-sm-9 ">
+                                    <p class="">Xếp loại</p>
+                                  </div>
+                                  <div class="col-lg-3 col-md-3 col-sm-3 ">
+                                    <p class="">Tỉ lệ</p>
+                                  </div>
+                                </th>
+                              </tr>
+                              <tr>
+                                <td><iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; inset: 0px;"></iframe>
+                                  <canvas class="canvasDoughnut" height="175" width="175" style="margin: 15px 10px 10px 0px; width: 140px; height: 140px;"></canvas>
+                                </td>
+                                <td>
+                                  <table class="tile_info">
+                                    <tbody><tr>
+                                      <td>
+                                        <p><i class="fa fa-square blue"></i>Xuất Sắc</p>
+                                      </td>
+                                      <td>{{$thongke['Ty Le Xuat Sac']}}%</td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <p><i class="fa fa-square green"></i>Giỏi</p>
+                                      </td>
+                                      <td>{{$thongke['Ty Le Gioi']}}%</td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <p><i class="fa fa-square purple"></i>Khá </p>
+                                      </td>
+                                      <td>{{$thongke['Ty Le Kha']}}%</td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <p><i class="fa fa-square aero"></i>Đạt </p>
+                                      </td>
+                                      <td>{{$thongke['Ty Le Dat']}}%</td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <p><i class="fa fa-square red"></i>Không Đạt </p>
+                                      </td>
+                                      <td>{{$thongke['Ty Le Khong Dat']}}%</td>
+                                    </tr>
+                                  </tbody></table>
+                                </td>
+                              </tr>
+                            </tbody></table>
+                          </div>
                         </div>
                       </div>
+                      <!-- End Char -->
                     </div>
-                    <!-- End Char -->
                   </div>
-                </div>
+                  @endif
                 @endif
               </div>
               <!-- Danh sách -->
@@ -152,17 +155,7 @@
                         </select>
                         <button type="submit" class="btn btn-success"><i class="fa fa-plus-square"></i> Chọn</button>
                         <br>
-                    </div>
-                    
-                    {{-- Trang Thai --}}
-                    {{-- <div class="col-md-2 col-sm-2">
-                      <select id="heard" class="form-control" required="">
-                        @foreach ($trangthai as $tt)
-                          <option value="{{$tt['TrangThai']}}">{{$tt['TrangThai']}}</option>
-                        @endforeach
-                      </select>
-                      <br>
-                    </div> --}}
+                      </div>
                   </form>
                   <form>
                     <div class="clearfix"></div>

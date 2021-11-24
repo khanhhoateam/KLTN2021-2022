@@ -6,9 +6,10 @@ use App\Http\Controllers\Admin\MienGiamController;
 use App\Http\Controllers\Admin\TheLoaiController;
 use App\Http\Controllers\Admin\XetDuyetNCKHController;
 use App\Http\Controllers\Admin\QuanLyGVController ;
+use App\Http\Controllers\Admin\ChiTietNCKHController ;
 
 //Admin
-Route::prefix('thiet-lap-dinh-muc')->group(function () {
+Route::prefix('thiet-lap-dinh-muc')->middleware('CheckDotKeKhai')->group(function () {
 
   Route::get('/', [HocHamController::class, 'create']);
 
@@ -48,7 +49,7 @@ Route::prefix('mo-dot-ke-khai')->group(function(){
 
 });
 
-Route::prefix('thiet-lap-the-loai')->group(function(){
+Route::prefix('thiet-lap-the-loai')->middleware('CheckDotKeKhai')->group(function(){
 
   Route::get('/', [TheLoaiController::class, 'create'])->name('the-loai');
 
@@ -61,13 +62,18 @@ Route::prefix('thiet-lap-the-loai')->group(function(){
 
 });
 
-Route::prefix('xet-duyet-nckh')->group(function(){
+Route::prefix('xet-duyet-nckh')->middleware('CheckDotKeKhai')->group(function(){
   Route::get('/', [XetDuyetNCKHController::class, 'list'])->name('xet-duyet');
-  // Route::get('/chi-tiet-nckh/{id}', [ChiTietNCKHController::class, 'show'])->name('chi-tiet-nckh');
+  Route::get('/chi-tiet-nckh/{id}', [ChiTietNCKHController::class, 'show'])->name('chi-tiet-nckh');
+  Route::post('/chi-tiet-nckh/{id}/sua', [ChiTietNCKHController::class, 'edit'])->name('sua-nckh');
   Route::get('/duyet-nckh/{id}/{value}', [XetDuyetNCKHController::class, 'approve'])->name('duyet-nckh');
 });
 
-Route::prefix('quan-ly-giang-vien')->group(function(){
+Route::prefix('danh-sach-nckh')->middleware('CheckDotKeKhai')->group(function(){
+  Route::get('/', [XetDuyetNCKHController::class, 'listAll'])->name('danh-sach-nckh');
+});
+
+Route::prefix('quan-ly-giang-vien')->middleware('CheckDotKeKhai')->group(function(){
   Route::get('/', [QuanLyGVController::class, 'list']);
   Route::post('/', [QuanLyGVController::class, 'listwithMaDot'])->name('quan-ly-gv');
 });

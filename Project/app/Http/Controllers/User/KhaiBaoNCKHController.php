@@ -34,8 +34,7 @@ class KhaiBaoNCKHController extends Controller
     public function create(){
         return view('pages.user.khaibaonckh.khaibaonckh',[
             'title'=>'KHAI BÁO HOẠT ĐỘNG NCKH',
-            'MaDot'=>2,
-            'MaGV'=>1,
+            'MaDot'=>$this->DotKeKhaiServices->currentActive(),
             'giangvientg'=> $this->KhaiBaoNCKHServices->list_temp_table(),
             'giangvien'=> $this->GiangVienServices->list(),
             'theloai' => $this->TheLoaiServices->list(1),
@@ -63,4 +62,5 @@ class KhaiBaoNCKHController extends Controller
     public function autocomplete(Request $request){
         $this->KhaiBaoNCKHServices->searchByName($request);
     }
+
 }

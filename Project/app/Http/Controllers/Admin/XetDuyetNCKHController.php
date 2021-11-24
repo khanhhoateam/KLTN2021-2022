@@ -21,6 +21,13 @@ class XetDuyetNCKHController extends Controller
         ]);
     }
 
+    public function listAll(){
+        return view('pages.admin.danhsachnckh.danhsachnckh', [
+            'title' => 'DANH SÁCH NCKH',
+            'hoatdong' =>$this->XetDuyetNCKHServices->listAll(),
+        ]);
+    }
+
     public function approve($id, $value){
         $this->XetDuyetNCKHServices->approve($id, $value);
         return redirect()->back();
