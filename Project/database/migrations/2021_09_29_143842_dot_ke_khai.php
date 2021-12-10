@@ -17,9 +17,10 @@ class DotKeKhai extends Migration
             $table->id('MaDot');
             $table->datetime('ThoiGianBatDau');
             $table->datetime('ThoiGianKetThuc');
+            $table->integer('Enable');
             $table->timestamps();
         });
-        
+
     }
 
     /**

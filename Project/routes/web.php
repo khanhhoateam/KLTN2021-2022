@@ -1,31 +1,40 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\HocHamController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\LoginController;
 
-Route::prefix('admin')->group(function () {
+Route::get('/login', function () {
+    return view('login',[
+        'title' => 'ĐĂNG NHẬP'
+    ]);
+})->middleware('CheckUser');
+
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::prefix('admin')->middleware('CheckLogin')->group(function () {
+
     Route::get('/', function () {
-        return view('admin.home');
-    });
-    Route::prefix('thiet-lap-dinh-muc')->group(function () {
-        Route::get('/', [HocHamController::class, 'create']);
+        return view('index',[
+            'title' => 'TRANG CHỦ'
+        ]);
+    })->name('index');
 
-        Route::get('hoc-ham', [HocHamController::class, 'create']);
+    include_once app_path() . "/RouteCustom/quynh_admin_routes.php";
+    include_once app_path() . "/RouteCustom/hoa_admin_routes.php";
 
-        Route::post('hoc-ham', [HocHamController::class, 'temporary_save']);
+});
 
-        Route::post('hocham/luu', [HocHamController::class, 'store']);
-        
-    });
-    
+Route::prefix('user')->middleware('CheckLogin')->group(function () {
+
+    Route::get('/', function () {
+        return view('indexUser',[
+            'title' => 'TRANG CHỦ'
+        ]);
+    })->name('indexUser');
+
+    include_once app_path() . "/RouteCustom/hoa_user_routes.php";
+    include_once app_path() . "/RouteCustom/quynh_user_routes.php";
+
 });
