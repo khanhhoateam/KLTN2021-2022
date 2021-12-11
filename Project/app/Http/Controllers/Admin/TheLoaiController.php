@@ -56,7 +56,6 @@ class TheLoaiController extends Controller
                 $this->TheLoaiServices->store($result);
                 $this->TheLoaiServices->update_temp_table($result["MaTheLoai"]);
             }
-            Session::flash('success', 'Thêm Thể loại thành công !');
         }
         return redirect()->back();
     }

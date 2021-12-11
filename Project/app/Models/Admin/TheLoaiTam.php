@@ -10,7 +10,8 @@ class TheLoaiTam extends Model
     use HasFactory;
 
     public $table = "TheLoaiTam";
-    
+    public $primaryKey = "MaTheLoai";
+
     protected $fillable = [
         'TenTheLoai',
         'DiemNC',

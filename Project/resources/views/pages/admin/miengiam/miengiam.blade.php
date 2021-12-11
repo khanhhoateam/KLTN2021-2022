@@ -87,6 +87,7 @@
                         </div>
                       </div>
                       <!--Bảng tạm lưu-->
+                      @if (count($BangTam) > 0)
                       <div class="col-md-12 col-sm-12 " style="font-size: medium; margin-top: 30px;">
                         <div class="x_panel">
                           <div class="x_title">
@@ -140,6 +141,7 @@
                           </div>
                         </div>
                       </div>
+                      @endif
                     </form>
                   </div>
                 </div>
@@ -178,8 +180,18 @@
                             <tr>
                               <td>{{$i}}</td>
                               <td>{{$dsmg['TenMienGiam']}}</td>
-                              <td>{{$dsmg['DiemMienGiam']}}</td>
-                              <td>{{$dsmg['TyLeMienGiam']}}</td>
+                              @if( $dsmg['TyLeMienGiam'] == 0 && $dsmg['DiemMienGiam'] != 0)
+                                <td>{{$dsmg['DiemMienGiam']}}</td>
+                                <td>-</td>
+                              @endif
+                              @if( $dsmg['DiemMienGiam'] == 0 && $dsmg['TyLeMienGiam'] != 0 )
+                                <td>-</td>
+                                <td>{{$dsmg['TyLeMienGiam']}}</td>
+                              @endif
+                              @if ($dsmg['TyLeMienGiam'] == 0 && $dsmg['DiemMienGiam'] == 0)
+                                <td>-</td>
+                                <td>{{$dsmg['TyLeMienGiam']}}</td>
+                              @endif
                               <td>Từ {{ date('d-m-Y', strtotime($ThongTinDot['ThoiGianBatDau'])) }} đến {{ date('d-m-Y', strtotime($ThongTinDot['ThoiGianKetThuc'])) }}</td>
                             </tr>
                             @php

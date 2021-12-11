@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\TheLoaiController;
 use App\Http\Controllers\Admin\XetDuyetNCKHController;
 use App\Http\Controllers\Admin\QuanLyGVController ;
 use App\Http\Controllers\Admin\ChiTietNCKHController ;
+use App\Http\Controllers\TestController ;
 
 //Admin
 Route::prefix('thiet-lap-dinh-muc')->middleware('CheckDotKeKhai')->group(function () {
@@ -77,3 +78,6 @@ Route::prefix('quan-ly-giang-vien')->middleware('CheckDotKeKhai')->group(functio
   Route::get('/', [QuanLyGVController::class, 'list']);
   Route::post('/', [QuanLyGVController::class, 'listwithMaDot'])->name('quan-ly-gv');
 });
+
+Route::get('/test', [TestController::class, 'test']);
+Route::get('/testdkk', [TestController::class, 'dkk']);

@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
   <div class="left_col scroll-view">
     <div class="navbar nav_title" style="border: 0;">
-      <a href="index.php" class="site_title"><i class="fa fa-ra"></i> <span>SUVI Scientific</span></a>
+      <a href="index.php" class="site_title"><i class="fa fa-ra"></i> <span>Khai Báo NCKH</span></a>
     </div>
 
     <div class="clearfix"></div>
@@ -33,8 +33,10 @@
             </ul>
           </li>
           <li><a href="{{ route('ho-so') }}"><i class="fa fa-edit"></i> Quản lý hồ sơ</a></li>
-          <li><a href="{{route('nckh_gvtg')}}"><i class="fa fa-plus-square"></i> Kê khai hoạt động </a></li>
-          <li><a href="{{route('ds-nckh')}}"><i class="fa fa-table"></i> Danh sách NCKH kê khai</a></li>
+          <li><a href="{{ route('nckh_gvtg') }}"><i class="fa fa-plus-square"></i> Kê khai hoạt động </a></li>
+          <li><a href="{{ route('khai_bao_mg') }}"><i class="fa fa-plus-square"></i> Kê khai miễn giảm </a></li>
+          <li><a href="{{ route('ds-nckh') }}"><i class="fa fa-table"></i> Danh sách NCKH kê khai</a></li>
+          <li><a href="{{ route('ds-nckh-tg') }}"><i class="fa fa-table"></i> Danh sách NCKH tham gia</a></li>
         </ul>
       </div>
     </div>

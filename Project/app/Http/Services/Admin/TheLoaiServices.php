@@ -6,15 +6,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\TheLoai;
 use App\Models\Admin\TheLoaiTam;
+use Session;
 
 class TheLoaiServices {
 
   public function store($TheLoai){
-    TheLoai::create([
-      'TenTheLoai' => $TheLoai["TenTheLoai"],
-      'DiemNC' => $TheLoai["DiemNC"],
-      'MaDot' => $TheLoai["MaDot"]
-  ]);
+    $query = TheLoai::where('TenTheLoai', $TheLoai["TenTheLoai"])
+            ->where('MaDot', $TheLoai["MaDot"])
+            ->update([
+                'DiemNC' => $TheLoai["DiemNC"],
+            ]);
+    if($query > 0){
+      Session::flash('success', 'Thiết lập Thể loại thành công !');
+    }else{
+      Session::flash('error', 'Thiết lập Thể loại thất bại !');
+    }
   }
 
   public function list($madot){

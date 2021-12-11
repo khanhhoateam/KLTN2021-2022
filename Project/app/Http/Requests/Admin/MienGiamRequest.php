@@ -25,10 +25,9 @@ class MienGiamRequest extends FormRequest
     public function rules()
     {
         return [
-            'Ten_mien_giam' => 'unique:LoaiMienGiam,TenMienGiam,NULL,MaMienGiam,MaDot,'.request('Ma_dot'),
+            'Ten_mien_giam' => 'unique:MienGiamTam,TenMienGiam,DiemMienGiam,TyLeMienGiam,Active,MaDot,'.request('Ma_dot'),
             'Diem' => 'required_without:TyLe',
             'TyLe' => 'required_without:Diem',
-
         ];
     }
     public function messages() : array

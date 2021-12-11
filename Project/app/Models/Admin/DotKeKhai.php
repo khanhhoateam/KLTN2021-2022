@@ -35,4 +35,8 @@ class DotKeKhai extends Model
             'MaHocHam' 
         );
     }
+    public function MienGiam() 
+    {
+        return $this->hasMany(MienGiam::class, 'MaDot', 'MaDot');
+    }
 }

@@ -6,15 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\HocHam;
 use App\Models\Admin\HocHamTam;
+use Session;
 
 class HocHamServices {
 
   public function store($hocham){
-    HocHam::create([
-      'TenHocHam' => $hocham["TenHocHam"],
-      'DiemDMHH' => $hocham["DiemDMHH"],
-      'MaDot' => $hocham["MaDot"]
-  ]);
+    $query = HocHam::where('TenHocHam', $hocham["TenHocHam"])->where('MaDot', $hocham["MaDot"])->update([
+      'DiemDMHH' => $hocham["DiemDMHH"]
+    ]);
+    if(!($query > 0)){
+      Session::flash('error', 'Sửa Học hàm không thành công !');
+    }else{
+      Session::flash('success', 'Sửa Học hàm thành công !');
+    }
   }
 
   public function list($madot){

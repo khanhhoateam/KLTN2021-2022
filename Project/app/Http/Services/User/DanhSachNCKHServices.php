@@ -23,6 +23,20 @@ class DanhSachNCKHServices {
     // dd($tenGV, $IdGV, $mahd, $hd);
     return $hd;
   }
+  public function listByName($id){
+    //Lay ten gv tu bang User
+    $tenGV = User::where('id', $id)->value('name');
+    //Lay MaGiangVien tu bang GiangVien theo TenGiangVien
+    $ma_gv = [];
+    $IdGV = GiangVien::where('TenGiangVien', $tenGV)->get();
+    foreach($IdGV as $IdGV){
+      array_push($ma_gv, $IdGV['MaGiangVien']);
+    }
+    //Lay cac thuoc tinh hoat dong
+    $hd = KhaiBaoNCKH::whereIn('GVKeKhai', $ma_gv)->where('TrangThai', 'Đã duyệt')->orderByDesc('MaHoatDong')->get();
+    // dd($tenGV, $IdGV, $mahd, $hd);
+    return $hd;
+  }
   public static function listThamGia($id) {
     $thamgia = KhaiBaoNCKH::find($id)->ChiTietHD;
     return $thamgia;

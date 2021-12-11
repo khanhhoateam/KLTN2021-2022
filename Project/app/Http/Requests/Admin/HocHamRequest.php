@@ -25,13 +25,13 @@ class HocHamRequest extends FormRequest
     public function rules()
     {
         return [
-            'Ten_hoc_ham' => 'unique:HocHam,TenHocHam,NULL,MaHocHam,MaDot,'.request('Ma_dot')
+            'Ten_hoc_ham' => 'unique:HocHamTam,TenHocHam,MaHocHam,Active,MaDot,'.request('Ma_dot')
         ];
     }
     public function messages() : array
     {
         return [
-            'Ten_hoc_ham.unique' => 'Học hàm này đã được khai báo !'
+            'Ten_hoc_ham.unique' => 'Học hàm này đã được thiết lập !'
         ];
     }
 }

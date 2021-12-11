@@ -22,4 +22,10 @@ class DanhSachNCKHController extends Controller
             'hoatdong' => $this->DanhSachNCKHServices->listByID(Auth::user()->id),
         ]);
     }
+    public function list_tg(){
+        return view('pages.user.danhsachnckh.danhsachnckh',[
+            'title'=>'DANH SÁCH HOẠT ĐỘNG NCKH THAM GIA',
+            'hoatdong' => $this->DanhSachNCKHServices->listByName(Auth::user()->id),
+        ]);
+    }
 }

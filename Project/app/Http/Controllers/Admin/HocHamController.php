@@ -56,7 +56,6 @@ class HocHamController extends Controller
                 $this->HocHamServices->store($result);
                 $this->HocHamServices->update_temp_table($result["MaHocHam"]);
             }
-            Session::flash('success', 'Thêm Học hàm thành công !');
         }
         return redirect()->back();
     }
