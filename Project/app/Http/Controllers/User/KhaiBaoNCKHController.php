@@ -26,7 +26,7 @@ class KhaiBaoNCKHController extends Controller
             'MaDot'=>$this->DotKeKhaiServices->currentActive(),
             'giangvientg'=> $this->KhaiBaoNCKHServices->list_temp_table(),
             'giangvien'=> $this->GiangVienServices->list(),
-            'theloai' => $this->TheLoaiServices->list(1),
+            'theloai' => $this->TheLoaiServices->list($this->DotKeKhaiServices->currentActive()),
             'vaitro' => $this->VaiTroServices->list(),
         ]);
     }
@@ -37,7 +37,7 @@ class KhaiBaoNCKHController extends Controller
             'MaDot'=>$this->DotKeKhaiServices->currentActive(),
             'giangvientg'=> $this->KhaiBaoNCKHServices->list_temp_table(),
             'giangvien'=> $this->GiangVienServices->list(),
-            'theloai' => $this->TheLoaiServices->list(1),
+            'theloai' => $this->TheLoaiServices->list($this->DotKeKhaiServices->currentActive()['MaDot']),
             'vaitro' => $this->VaiTroServices->list(),
         ]);
     }

@@ -21,6 +21,7 @@ class GiangVien extends Model
         'Email',
         'UserID',
         'MaHocHam',
+        'Active'
     ];
 
     public function HocHam()

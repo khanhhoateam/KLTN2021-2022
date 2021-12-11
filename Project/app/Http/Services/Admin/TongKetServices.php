@@ -11,5 +11,7 @@ class TongKetServices {
   public static function getDiemDanhGia ($id){
     return TongKet::where('MaGiangVien', $id)->value('DiemDanhGia');
   }
-
+  public static function getDiemDM ($id){
+    return TongKet::where('MaGiangVien', $id)->value('DiemDM');
+  }
 };

@@ -1,6 +1,8 @@
 @php
   use \App\Http\Services\User\DanhSachNCKHServices;
   use \App\Http\Services\User\GiangVienServices;
+  use \App\Http\Services\Admin\XetDuyetNCKHServices;
+  use \App\Http\Services\Admin\ChiTietNCKHServices;
 @endphp 
 @extends('mainUser')
 
@@ -9,7 +11,7 @@
 <div class="right_col" role="main">
   <section class="content">
     <!-- Default box -->
-    <table class="table">
+    <table class="table table-striped jambo_table bulk_action">
       <thead>
         <tr>
           <th>STT</th>
@@ -31,11 +33,11 @@
               
               <td>
                 @php
-                  $thamgia = DanhSachNCKHServices::listThamGia($hd['MaHoatDong']);
+                  $thamgia = XetDuyetNCKHServices::listThamGia($hd['MaHoatDong']);
                   //Dem so giang vien tham gia trong hoat dong
                   $count_gvtg = count($thamgia);
                   for ($j=0; $j < $count_gvtg; $j++) { 
-                     echo GiangVienServices::listByID($thamgia[$j]["MaGiangVien"]). " ";
+                     echo GiangVienServices::listByID($thamgia[$j]["MaGiangVien"]). " số điểm nhận: ". ChiTietNCKHServices::GetDiemNC($hd['MaHoatDong'], $thamgia[$j]["MaGiangVien"]). '<br>';
                   }
                 @endphp
               </td>

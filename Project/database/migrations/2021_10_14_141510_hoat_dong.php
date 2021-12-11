@@ -19,7 +19,7 @@ class HoatDong extends Migration
             $table->foreign('MaTheLoai')->references('MaTheLoai')->on('theloai')->onDelete('cascade');
             $table->string('TenHD', 100);
             $table->string('File');
-            $table->string('TrangThai', 10);
+            $table->string('TrangThai', 20);
             $table->integer('HanSuDung');
             $table->string('MoTa');
             $table->unsignedBigInteger('GVKeKhai');

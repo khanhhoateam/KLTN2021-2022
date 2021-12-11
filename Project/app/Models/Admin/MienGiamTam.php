@@ -10,6 +10,7 @@ class MienGiamTam extends Model
     use HasFactory;
 
     public $table = "LoaiMienGiamTam";
+    public $primaryKey = "MaMienGiam";
     
     protected $fillable = [
         'TenMienGiam',

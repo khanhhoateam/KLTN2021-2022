@@ -5,6 +5,10 @@ namespace App\Http\Services\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\DotKeKhai;
+use App\Models\Admin\HocHam;
+use App\Models\Admin\MienGiam;
+use App\Models\Admin\TheLoai;
+use App\Models\User\GiangVien;
 
 class DotKeKhaiServices {
 
@@ -24,7 +28,7 @@ class DotKeKhaiServices {
   //Lay ma dot cu
   public function getPreviousActive($id)
   {
-      return DotKeKhai::where('MaDot', '<', $id)->orderBy('MaDot','asc')->first();
+      return DotKeKhai::where('MaDot', '<', $id)->orderBy('MaDot','desc')->first();
   }
 
   public function store($dkk){
@@ -35,12 +39,67 @@ class DotKeKhaiServices {
       'ThoiGianKetThuc'=>$dkk['tgkt'],
       'Enable'=>$dkk['enable']
     ]);
+    // tao moi hoc ham khi mo dkk moi
+    $dkk_ht = $this->currentActive()['MaDot'] ;
+    $dkk_t = $this->getPreviousActive($dkk_ht)['MaDot'];  
+    $hocham = HocHam::where('MaDot', $dkk_t)->get();
+    foreach($hocham as $hh){
+        HocHam::create([
+            'TenHocHam' => $hh['TenHocHam'],
+            'DiemDMHH' => $hh['DiemDMHH'],
+            'MaDot' => $dkk_ht,
+        ]);
+    };
+    // lay ra cac ma hoc ham o dot truoc
+    $hochamtrongdot = [];
+    $hocham = HocHam::where('MaDot', $dkk_t)->get();
+    foreach($hocham as $hh){
+        array_push($hochamtrongdot, $hh['MaHocHam']);
+    };
+    // tao moi giang vien khi mo dkk moi
+    $giangvien = GiangVien::whereIn('MaHocHam', $hochamtrongdot)->get();  
+    foreach($giangvien as $gv){
+        $tenhh = HocHam::where('MaHocHam', $gv['MaHocHam'])->where('MaDot', $dkk_t)->get();
+        GiangVien::create([
+            'TenGiangVien' => $gv['TenGiangVien'],
+            'SDT' => $gv['SDT'],
+            'Email' => $gv['Email'],
+            'UserID' => $gv['UserID'],
+            'MaHocHam' => HocHam::where('TenHocHam', $tenhh[0]['TenHocHam'])->where('MaDot', $dkk_ht)->value('MaHocHam'),
+            'Active' => $gv['Active']
+        ]);
+    };
+    // tao moi the loai khi mo dkk moi
+    $theloai = TheLoai::where('MaDot', $dkk_t)->get();
+    foreach($theloai as $tl){
+        TheLoai::create([
+            'TenTheLoai' => $tl['TenTheLoai'],
+            'DiemNC' => $tl['DiemNC'],
+            'MaDot' => $dkk_ht,
+        ]);
+    };
+    //tao moi mien giam khi mo dkk moi
+    $miengiam = MienGiam::where('MaDot', $dkk_t)->get();
+    foreach($miengiam as $mg){
+        MienGiam::create([
+            'TenMienGiam' => $mg['TenMienGiam'],
+            'DiemMienGiam' => $mg['DiemMienGiam'],
+            'TyLeMienGiam' => $mg['TyLeMienGiam'],
+            'MaDot' => $dkk_ht
+        ]);
+    };
   } 
 
   public function ds_gv($id){
     $dkk = DotKeKhai::find($id);
     $gv = $dkk->GiangVien->sortDesc();
     return $gv;
+  }
+
+  public function ds_mg($id){
+    $dkk = DotKeKhai::find($id);
+    $mg = $dkk->MienGiam->sortDesc();
+    return $mg;
   }
 
   public function thongkegv($id){

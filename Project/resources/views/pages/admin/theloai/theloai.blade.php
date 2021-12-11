@@ -81,6 +81,7 @@
                           <button type='submit' class="btn btn-success"><i class="fa fa-plus-square"></i> Thiết Lập Thể Loại Khác</button>
                         </div>
                       </div>
+                      @if(count($BangTam) != 0)
                       <div class="col-md-12 col-sm-12 " style="font-size: medium; margin-top: 30px;">
                         <div class="x_panel">
                           <div class="x_title">
@@ -132,6 +133,7 @@
                           </div>
                         </div>
                       </div> 
+                      @endif
                     </form>
                   </div>
                 </div>

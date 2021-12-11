@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class TheLoaiRequest extends FormRequest
+class HoSoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,7 @@ class TheLoaiRequest extends FormRequest
      */
     public function authorize()
     {
-        return true ;
+        return true;
     }
 
     /**
@@ -25,13 +25,15 @@ class TheLoaiRequest extends FormRequest
     public function rules()
     {
         return [
-            'Ten_the_loai' => 'unique:TheLoaiTam,TenTheLoai,DiemNC,Active,MaDot,'.request('Ma_dot')
+            'TenGiangVien' => 'unique:GiangVien',
+            'Email' => 'unique:GiangVien',
         ];
     }
     public function messages() : array
     {
         return [
-            'Ten_the_loai.unique' => 'Thể loại này đã được khai báo !'
+            'TenGiangVien.unique' => 'Tên này đã được đăng ký đã được khai báo !',
+            'Email.unique' => 'Email này đã được đăng ký đã được khai báo !',
         ];
     }
 }

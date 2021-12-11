@@ -38,5 +38,28 @@ class TheloaiSeeder extends Seeder
             'DiemNC' => '700',
             'MaDot' => '1',
         ]);
+        DB::table('TheLoai')->insert([
+            'TenTheLoai' => 'Đề tài cấp Nhà nước',
+            'DiemNC' => '1200',
+            'MaDot' => '2',
+        ]);
+
+        DB::table('TheLoai')->insert([
+            'TenTheLoai' => 'Đề tài NAFOSTED',
+            'DiemNC' => '1000',
+            'MaDot' => '2',
+        ]);
+
+        DB::table('TheLoai')->insert([
+            'TenTheLoai' => 'Đề tài cấp Bộ và tương đương',
+            'DiemNC' => '900',
+            'MaDot' => '2',
+        ]);
+
+        DB::table('TheLoai')->insert([
+            'TenTheLoai' => 'Đề tài cấp Trường',
+            'DiemNC' => '700',
+            'MaDot' => '2',
+        ]);
     }
 }

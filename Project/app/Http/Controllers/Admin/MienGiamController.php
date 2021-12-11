@@ -38,7 +38,7 @@ class MienGiamController extends Controller
     }
 
 
-    public function temporary_table (MienGiamRequest $request) {
+    public function temporary_table (Request $request) {
         $this->MienGiamServices->temporary_table($request);
         Session::flash('success', 'Đã thêm Miễn giảm vào bảng tạm lưu !');
         return redirect()->back();

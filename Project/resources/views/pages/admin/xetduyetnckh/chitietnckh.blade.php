@@ -167,8 +167,8 @@
                             $i=1;
                         @endphp
                         <tbody>
+                          @foreach ( $ChiTiet as $ct )
                           <tr>
-                            @foreach ($ChiTiet as $ct )
                               <td>{{ $i }}</td>
                               <td>{{ GiangVienServices::listByID($ct['MaGiangVien']) }}</td>
                               <td>{{ VaiTroServices::getVaiTro($ct['MaVaiTro']) }}</td>
@@ -176,8 +176,8 @@
                               @php
                                 $i++;
                               @endphp
-                            @endforeach
                           </tr>
+                          @endforeach
                         </tbody>
                       </table>
                       <hr>

@@ -9,7 +9,9 @@ use App\Models\User\ChiTietTam;
 use App\Models\User\ChiTietHD;
 use App\Models\User\GiangVien;
 use App\Models\Admin\TheLoai;
+use App\Models\Admin\DotKeKhai;
 use App\Models\Admin\VaiTro;
+use App\Models\Admin\HocHam;
 use App\Models\User;
 use Illuminate\Support\Arr;
 
@@ -97,9 +99,16 @@ class KhaiBaoNCKHServices {
   }
   
   public function temporary_table($request){
+    $hochamtrongdot = [];
+    $hocham = HocHam::where('MaDot',  DotKeKhai::orderBy('MaDot', 'desc')->first()['MaDot'])->get();
+    foreach($hocham as $hh){
+        array_push($hochamtrongdot, $hh['MaHocHam']);
+    }
     $magiangvien = GiangVien::where('TenGiangVien', $request['ten-gv-tg'])
+                            ->whereIn('MaHocHam', $hochamtrongdot)
                     ->value('MaGiangVien');
     $tengiangvien = GiangVien::where('TenGiangVien', $request['ten-gv-tg'])
+                            ->whereIn('MaHocHam', $hochamtrongdot)
                     ->value('TenGiangVien');
     ChiTietTam::create([
       'MaGiangVien' => $magiangvien,

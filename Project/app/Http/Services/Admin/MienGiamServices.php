@@ -10,12 +10,12 @@ use App\Models\Admin\MienGiamTam;
 class MienGiamServices {
 
   public function store($MienGiam){
-    MienGiam::create([
-      'TenMienGiam' => $MienGiam['TenMienGiam'],
-      'DiemMienGiam' => $MienGiam['DiemMienGiam'],
-      'TyLeMienGiam' => $MienGiam['TyLeMienGiam'],
-      'MaDot' => $MienGiam['MaDot'],
-    ]);
+    MienGiam::where('TenMienGiam', $MienGiam['TenMienGiam'])
+            ->where('MaDot', $MienGiam['MaDot'])
+            ->update([
+              'DiemMienGiam' => $MienGiam['DiemMienGiam'],
+              'TyLeMienGiam' => $MienGiam['TyLeMienGiam']
+            ]);
   }
 
   public function list($madot){
@@ -63,6 +63,10 @@ class MienGiamServices {
 
   public function update_temp_table($id){
     return MienGiamTam::where('MaMienGiam', $id)->update(['Active' => 0]);
+  }
+
+  public static function getMienGiamByID($id){
+    return MienGiam::where('MaMienGiam', $id)->get();
   }
 
 }

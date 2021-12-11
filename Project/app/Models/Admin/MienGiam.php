@@ -18,4 +18,5 @@ class MienGiam extends Model
         'TyLeMienGiam',
         'MaDot'
     ];
+    
 }

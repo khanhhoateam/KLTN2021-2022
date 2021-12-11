@@ -10,7 +10,7 @@
 <div class="right_col" role="main">
   <section class="content">
     <!-- Default box -->
-    <table class="table">
+    <table class="table table-striped jambo_table bulk_action">
       <thead>
         <tr>
           <th>STT</th>

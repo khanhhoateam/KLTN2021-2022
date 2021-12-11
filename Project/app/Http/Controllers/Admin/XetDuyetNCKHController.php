@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\User\GiangVien;
 use App\Models\User\KhaiBaoNCKH;
 use App\Http\Services\Admin\XetDuyetNCKHServices;
+use App\Http\Services\Admin\DotKeKhaiServices;
 
 class XetDuyetNCKHController extends Controller
 {
-    public function __construct(XetDuyetNCKHServices $XetDuyetNCKHServices){
+    public function __construct(XetDuyetNCKHServices $XetDuyetNCKHServices, DotKeKhaiServices $DotKeKhaiServices){
         $this->XetDuyetNCKHServices =  $XetDuyetNCKHServices;
+        $this->DotKeKhaiServices =  $DotKeKhaiServices;
     }
 
     public function list(){
@@ -29,7 +31,9 @@ class XetDuyetNCKHController extends Controller
     }
 
     public function approve($id, $value){
+        $madot = $this->DotKeKhaiServices->currentActive();
         $this->XetDuyetNCKHServices->approve($id, $value);
+        $this->XetDuyetNCKHServices->updateTongKet($madot);
         return redirect()->back();
     }
     
