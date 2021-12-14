@@ -113,15 +113,27 @@
                       </div>
                     </div>
                     <div class="form-group row ">
-                      <label class="control-label col-md-4 col-sm-4 label-align">Điểm Định Mức</label>
+                      <label class="control-label col-md-4 col-sm-4 label-align">Điểm Định Mức Nghiên Cứu</label>
                       <div class="col-md-6 col-sm-6 ">
                         <input type="text" name="HocHam" class="form-control" value="{{ TongKetServices::getDiemDM($gv['MaGiangVien']) }}" disabled>
                       </div>
                     </div>
                     <div class="form-group row ">
-                      <label class="control-label col-md-4 col-sm-4 label-align">Điểm Ghi Nhận</label>
+                      <label class="control-label col-md-4 col-sm-4 label-align">Tiến Độ Hoàn Thành</label>
                       <div class="col-md-6 col-sm-6 ">
-                        <input type="text" name="HocHam" class="form-control" value="{{ TongKetServices::getDiemDM($gv['MaGiangVien']) + TongKetServices::getDiemDanhGia($gv['MaGiangVien']) }}" disabled>
+                        <input type="text" name="HocHam" class="form-control" value="{{ TongKetServices::getDiemDanhGia($gv['MaGiangVien']) }}" disabled>
+                      </div>
+                    </div>
+                    <div class="form-group row ">
+                      <label class="control-label col-md-4 col-sm-4 label-align">Đánh Giá</label>
+                      <div class="col-md-6 col-sm-6 ">
+                        <input type="text" name="HocHam" class="form-control" value="{{ $TongKet }}" disabled>
+                      </div>
+                    </div>
+                    <div class="form-group row ">
+                      <label class="control-label col-md-4 col-sm-4 label-align">Đợt Kê Khai</label>
+                      <div class="col-md-6 col-sm-6 ">
+                        <input type="text" name="HocHam" class="form-control" value="Đợt {{ date('Y', strtotime($ThongTinDot['ThoiGianBatDau'])) }} từ {{ date('d-m-Y', strtotime($ThongTinDot['ThoiGianBatDau'])) }} đến {{ date('d-m-Y', strtotime($ThongTinDot['ThoiGianKetThuc'])) }}" disabled>
                       </div>
                     </div>
                     <div class="form-group">

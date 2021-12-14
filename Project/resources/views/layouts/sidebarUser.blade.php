@@ -29,7 +29,7 @@
             <ul class="nav child_menu">
               <li><a href="#">Trang Chủ</a></li>
               <li><a href="#">Trang Báo</a></li>
-              <li><a href="#">Giới Thiệu</a></li>
+              <li><a href="{{route('gioi-thieu-user')}}">Giới Thiệu</a></li>
             </ul>
           </li>
           <li><a href="{{ route('ho-so') }}"><i class="fa fa-edit"></i> Quản lý hồ sơ</a></li>

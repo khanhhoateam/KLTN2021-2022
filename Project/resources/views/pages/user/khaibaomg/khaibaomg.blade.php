@@ -70,15 +70,16 @@
                         <td>
                         @if (MienGiamServices::getMienGiamByID($ctmg['MaMienGiam'] )[0]['DiemMienGiam'] != 0)
                           {{ MienGiamServices::getMienGiamByID($ctmg['MaMienGiam'])[0]['DiemMienGiam'] }}
+                        @elseif(MienGiamServices::getMienGiamByID($ctmg['MaMienGiam'])[0]['TyLeMienGiam'] == 0 && MienGiamServices::getMienGiamByID($ctmg['MaMienGiam'])[0]['DiemMienGiam'] == 0)
+                          {{ MienGiamServices::getMienGiamByID($ctmg['MaMienGiam'])[0]['DiemMienGiam'] }}
                         @else
                           -
                         @endif
                         </td>
                         <td>
                           @if (MienGiamServices::getMienGiamByID($ctmg['MaMienGiam'])[0]['TyLeMienGiam'] != 0 && MienGiamServices::getMienGiamByID($ctmg['MaMienGiam'])[0]['DiemMienGiam'] == 0)
-                            {{ MienGiamServices::getMienGiamByID($ctmg['MaMienGiam'])[0]['TyLeMienGiam'] }}
-                          @elseif(MienGiamServices::getMienGiamByID($ctmg['MaMienGiam'])[0]['TyLeMienGiam'] == 0 && MienGiamServices::getMienGiamByID($ctmg['MaMienGiam'])[0]['DiemMienGiam'] == 0)
-                            {{ MienGiamServices::getMienGiamByID($ctmg['MaMienGiam'])[0]['TyLeMienGiam'] }}
+                            {{ MienGiamServices::getMienGiamByID($ctmg['MaMienGiam'])[0]['TyLeMienGiam']*100 ."%" }}
+                          
                           @else
                             -
                           @endif
