@@ -78,7 +78,3 @@ Route::prefix('quan-ly-giang-vien')->middleware('CheckDotKeKhai')->group(functio
   Route::get('/', [QuanLyGVController::class, 'list']);
   Route::post('/', [QuanLyGVController::class, 'listwithMaDot'])->name('quan-ly-gv');
 });
-
-Route::get('/test', [TestController::class, 'test']);
-Route::get('/testdkk', [TestController::class, 'dkk']);
-Route::get('/testkc', [TestController::class, 'ketchuyen']);
