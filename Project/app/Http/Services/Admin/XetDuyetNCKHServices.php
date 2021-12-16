@@ -28,10 +28,13 @@ class XetDuyetNCKHServices {
   }
   public function approve($id ,$value){
     if($value == 0) {
-      KhaiBaoNCKH::where('MaHoatDong', $id)->update(['TrangThai' => 'Đã duyệt']);  
+      KhaiBaoNCKH::where('MaHoatDong', $id)->update(['TrangThai' => 'Đã duyệt']);
+      return 1;  
     }
     else{
-      KhaiBaoNCKH::where('MaHoatDong', $id)->update(['TrangThai' => 'Không duyệt']);  
+      KhaiBaoNCKH::where('MaHoatDong', $id)->update(['TrangThai' => 'Không duyệt'])
+      ;
+      return 0;  
     }
   }
   public function updateTongKet($madot) {
@@ -120,8 +123,7 @@ class XetDuyetNCKHServices {
             TongKet::where('MaGiangVien', $gv)->where('MaDot',  $madot['MaDot'])->update([
                 'DiemDM' => $diemdm[$gv],
                 'DiemDanhGia' => $diemdg[$gv]
-            ]);
-            
+            ]);  
         }
     } 
   }

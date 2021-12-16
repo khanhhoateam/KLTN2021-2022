@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             ChiTietHoatDongSeeder::Class,
             TongKetSeeder::Class, 
             LoaiMienGiamSeeder::Class,
-            ChiTietMienGiamSeeder::Class
+            ChiTietMienGiamSeeder::Class,
+            DanhGiaSeeder::class
         ]);
     }
 }

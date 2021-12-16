@@ -2,6 +2,7 @@
   use App\Http\Services\User\GiangVienServices;
   use App\Http\Services\Admin\MienGiamServices;
   use App\Http\Services\Admin\TongKetServices;
+  use App\Models\Admin\HoatDong;
 @endphp
 @extends('mainUser')
 
@@ -113,15 +114,27 @@
                       </div>
                     </div>
                     <div class="form-group row ">
-                      <label class="control-label col-md-4 col-sm-4 label-align">Điểm Định Mức</label>
+                      <label class="control-label col-md-4 col-sm-4 label-align">Điểm Định Mức Nghiên Cứu</label>
                       <div class="col-md-6 col-sm-6 ">
                         <input type="text" name="HocHam" class="form-control" value="{{ TongKetServices::getDiemDM($gv['MaGiangVien']) }}" disabled>
                       </div>
                     </div>
                     <div class="form-group row ">
-                      <label class="control-label col-md-4 col-sm-4 label-align">Điểm Ghi Nhận</label>
+                      <label class="control-label col-md-4 col-sm-4 label-align">Tiến Độ Hoàn Thành</label>
                       <div class="col-md-6 col-sm-6 ">
-                        <input type="text" name="HocHam" class="form-control" value="{{ TongKetServices::getDiemDM($gv['MaGiangVien']) + TongKetServices::getDiemDanhGia($gv['MaGiangVien']) }}" disabled>
+                        <input type="text" name="HocHam" class="form-control" value="{{ TongKetServices::getDiemDanhGia($gv['MaGiangVien']) }}" disabled>
+                      </div>
+                    </div>
+                    <div class="form-group row ">
+                      <label class="control-label col-md-4 col-sm-4 label-align">Đánh Giá</label>
+                      <div class="col-md-6 col-sm-6 ">
+                        <input type="text" name="HocHam" class="form-control" value="{{ $TongKet }}" disabled>
+                      </div>
+                    </div>
+                    <div class="form-group row ">
+                      <label class="control-label col-md-4 col-sm-4 label-align">Đợt Kê Khai</label>
+                      <div class="col-md-6 col-sm-6 ">
+                        <input type="text" name="HocHam" class="form-control" value="Đợt {{ date('Y', strtotime($ThongTinDot['ThoiGianBatDau'])) }} từ {{ date('d-m-Y', strtotime($ThongTinDot['ThoiGianBatDau'])) }} đến {{ date('d-m-Y', strtotime($ThongTinDot['ThoiGianKetThuc'])) }}" disabled>
                       </div>
                     </div>
                     <div class="form-group">
@@ -140,7 +153,41 @@
       </div>
     </div>
   </div>
-<div class="clearfix"></div>
+<div class="clearfix">
+  <div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+      <h2>Bảng Kết Chuyển Hoạt Động</h2>
+      <table class="table table-striped" style="text-align: center">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Tên hoạt động</th>
+            <th>Điểm dư</th>
+            <th>Hạn Sử Dụng</th>
+            <th>Đợt</th>
+          </tr>
+        </thead>
+        <tbody>
+          @php
+          $i=1;
+          @endphp
+          @foreach($KetChuyen as $kc)
+          <tr>
+            <th scope="row">{{$i}}</th>
+            <td>{{ HoatDong::where('MaHoatDong', $kc['MaHoatDong'])->value('TenHD') }}</td>
+            <td>{{ $kc['DiemDu'] }}</td>
+            <td>{{ $kc['HSD'] }}</td>
+            <td>{{ date('d-m-Y', strtotime($ThongTinDot['ThoiGianBatDau'])) }} đến {{ date('d-m-Y', strtotime($ThongTinDot['ThoiGianKetThuc'])) }}</td>
+          </tr>
+          @php
+          $i++;
+          @endphp
+          @endforeach
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 </div>
 </div>  
 @endsection
