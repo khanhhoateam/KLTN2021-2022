@@ -21,8 +21,8 @@ Route::prefix('admin')->middleware('CheckLogin')->group(function () {
         ]);
     })->name('index');
 
-    include_once app_path() . "/RouteCustom/phuc_routes.php";
     include_once app_path() . "/RouteCustom/hoa_admin_routes.php";
+    include_once app_path() . "/RouteCustom/quynh_admin_routes.php";
 
 });
 
@@ -35,5 +35,6 @@ Route::prefix('user')->middleware('CheckLogin')->group(function () {
     })->name('indexUser');
 
     include_once app_path() . "/RouteCustom/hoa_user_routes.php";
+    include_once app_path() . "/RouteCustom/quynh_user_routes.php";
 
 });
