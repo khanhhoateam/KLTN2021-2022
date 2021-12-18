@@ -11,6 +11,8 @@ class HocHamTam extends Model
 
     public $table = "HocHamTam";
     
+    public $primaryKey = "MaHocHam";
+    
     protected $fillable = [
         'TenHocHam',
         'DiemDMHH',

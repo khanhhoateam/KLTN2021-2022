@@ -15,11 +15,11 @@ class LoaiMienGiam extends Migration
     {
         Schema::create('LoaiMienGiam', function (Blueprint $table) {
             $table->id('MaMienGiam');
-            $table->string('TenMienGiam');
+            $table->string('TenMienGiam', 500);
             $table->integer('DiemMienGiam');
             $table->float('TyLeMienGiam', 3, 2);
             $table->unsignedBigInteger('MaDot');
-            $table->foreign('MaDot')->references('MaDot')->on('dotkekhai');
+            $table->foreign('MaDot')->references('MaDot')->on('dotkekhai')->onDelete('cascade');
             $table->timestamps();
         });
     }
