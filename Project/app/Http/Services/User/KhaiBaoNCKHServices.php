@@ -14,6 +14,7 @@ use App\Models\Admin\VaiTro;
 use App\Models\Admin\HocHam;
 use App\Models\User;
 use Illuminate\Support\Arr;
+use Session;
 
 class KhaiBaoNCKHServices {
   public function store($request){
@@ -21,11 +22,9 @@ class KhaiBaoNCKHServices {
       $giangvien = ChiTietTam::where('Enable', 1)->get();
     }
     if($request->filled('the-loai', 'ten-hd', 'file', 'trang-thai', 'hsd', 'mo-ta', 'tieu-de', 'nam-xb', 'nha-xb', 'tap-chi', 'so-phat-hanh', 'chuan-danh-muc')){
-        $gv = GiangVien::where(
-                              'TenGiangVien', 
-                              User::where('id', $request['gv-ke-khai'])->value('name')
-                              )->value('MaGiangVien');
-        KhaiBaoNCKH::create([
+        $gv = GiangVien::where('TenGiangVien', 
+                              User::where('id', $request['gv-ke-khai'])->value('name'))->value('MaGiangVien');
+        $query_nckh = KhaiBaoNCKH::create([
           'MaTheLoai' => $request['the-loai'],
           'TenHD' => $request['ten-hd'],
           'File' => $request['file'],
@@ -63,7 +62,7 @@ class KhaiBaoNCKHServices {
                               'TenGiangVien', 
                               User::where('id', $request['gv-ke-khai'])->value('name')
                               )->value('MaGiangVien');
-        KhaiBaoNCKH::create([
+        $query_nckh = KhaiBaoNCKH::create([
           'MaTheLoai' => $request['the-loai'],
           'TenHD' => $request['ten-hd'],
           'File' => $request['file'],
@@ -79,6 +78,11 @@ class KhaiBaoNCKHServices {
           'ChuanDanhMuc' => '0',
           'Diem' => TheLoai::where("MaTheLoai", $request['the-loai'])->value('DiemNC')
         ]);
+        if($query_nckh){
+          Session::flash('success', 'Kê khai hoạt động thành công!');
+        }else{
+          Session::flash('error', 'Kê khai hoạt động thất bại');
+        }
         $hoatdongcuoi = KhaiBaoNCKH::select('MaHoatDong')->orderBy('MaHoatDong', 'DESC')->first();
         foreach($giangvien as $giangvien){
           ChiTietHD::create([

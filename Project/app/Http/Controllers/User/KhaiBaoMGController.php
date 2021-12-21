@@ -33,8 +33,12 @@ class KhaiBaoMGController extends Controller
         ]);
     }
     public function store(Request $request) {
-        $this->ChiTietMienGiamServices->store($request);
-        Session::flash('success', 'Khai báo miễn giảm thành công!');
+        $query = $this->ChiTietMienGiamServices->store($request);
+        if($query){
+            Session::flash('success', 'Khai báo miễn giảm thành công!');
+        }else{
+            Session::flash('error', 'Khai báo miễn giảm thất bại!');
+        }
         return redirect()->back();
     }
     public function delete($id) {

@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Services\Admin\XetDuyetMGServices;
+use App\Http\Services\Admin\XetDuyetNCKHServices;
 use App\Http\Services\Admin\DotKeKhaiServices;
 
 class XetDuyetMGController extends Controller
 {
-    public function __construct(XetDuyetMGServices $XetDuyetNCKHServices, DotKeKhaiServices $DotKeKhaiServices){
-        $this->XetDuyetMGServices =  $XetDuyetNCKHServices;
+    public function __construct(XetDuyetMGServices $XetDuyetMGServices, XetDuyetNCKHServices $XetDuyetNCKHServices, DotKeKhaiServices $DotKeKhaiServices){
+        $this->XetDuyetMGServices =  $XetDuyetMGServices;
+        $this->XetDuyetNCKHServices =  $XetDuyetNCKHServices;
         $this->DotKeKhaiServices =  $DotKeKhaiServices;
     }
 
@@ -23,6 +25,7 @@ class XetDuyetMGController extends Controller
     public function approve($id, $value){
         $madot = $this->DotKeKhaiServices->currentActive();
         $this->XetDuyetMGServices->approve($id, $value);
+        $this->XetDuyetNCKHServices->updateTongKet($madot);
         return redirect()->back();
     }
     

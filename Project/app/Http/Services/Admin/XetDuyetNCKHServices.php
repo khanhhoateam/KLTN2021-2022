@@ -22,6 +22,17 @@ class XetDuyetNCKHServices {
   public function listAll(){
     return KhaiBaoNCKH::orderByDesc('MaHoatDong')->get();
   }
+  public function listwithMaDot($madot){
+    $theloaitrongdot = TheLoai::where('MaDot', $madot)->get();
+    $hoatdongtrongdot = [];
+    foreach($theloaitrongdot as $tl){
+        $hoatdong = HoatDong::where('MaTheLoai', $tl['MaTheLoai'])->get();
+        foreach($hoatdong as $hd){
+            array_push($hoatdongtrongdot, $hd['MaHoatDong']);
+        }
+    }
+    return KhaiBaoNCKH::whereIn('MaHoatDong', $hoatdongtrongdot)->orderByDesc('MaHoatDong')->get();
+  }
   public static function listThamGia($id) {
     $thamgia = KhaiBaoNCKH::find($id)->ChiTietHD;
     return $thamgia;
@@ -84,7 +95,11 @@ class XetDuyetNCKHServices {
         $tylemg[$gv] = 0;
         $mamg[$gv] = ChiTietMienGiam::where('MaGiangVien', $gv)->whereIn('MaMienGiam', $miengiamtrongdot)->where('TrangThai', 1)->get();
         foreach($mamg[$gv] as $mmg){
-            if(
+            if(count(MienGiam::where('MaMienGiam', $mmg['MaMienGiam'])->get()) == 0) {
+                $diemmg[$gv] = 0;
+                $tylemg[$gv] = 0;
+            }
+            elseif(
                 MienGiam::where('MaMienGiam', $mmg['MaMienGiam'])->get()[0]['DiemMienGiam'] != 0 
                 && MienGiam::where('MaMienGiam', $mmg['MaMienGiam'])->get()[0]['TyLeMienGiam'] == 0
                 ) {
@@ -105,6 +120,9 @@ class XetDuyetNCKHServices {
         {
             $diemdm[$gv] = $diemhh[$gv]-$diemhh[$gv]*$tylemg[$gv];
         } elseif($diemmg[$gv] > 0 && $tylemg[$gv] == 0 )
+        {
+            $diemdm[$gv] = $diemhh[$gv]-$diemmg[$gv];
+        } elseif($diemmg[$gv] == 0 && $tylemg[$gv] == 0 )
         {
             $diemdm[$gv] = $diemhh[$gv]-$diemmg[$gv];
         }

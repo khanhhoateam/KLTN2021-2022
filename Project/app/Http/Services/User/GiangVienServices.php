@@ -48,4 +48,18 @@ class GiangVienServices {
     ]);
   }
 
+  public function admin_edit($request){
+    $tengv = GiangVien::where("MaGiangVien", $request['MaGiangVien'])->value('TenGiangVien');
+    User::where('name', $tengv)->update([
+      'name' => $request['TenGiangVien'],
+      'email' => $request['Email']
+    ]);
+    GiangVien::where("MaGiangVien", $request['MaGiangVien'])->update([
+      "TenGiangVien" => $request['TenGiangVien'],
+      "SDT" => $request['SDT'],
+      "Email" => $request['Email'],
+    ]);
+    return true;
+  }
+
 }

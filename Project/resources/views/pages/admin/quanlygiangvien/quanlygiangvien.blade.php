@@ -165,9 +165,6 @@
                           
                           <thead>
                             <tr class="headings">
-                              <th>
-                                <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" id="check-all" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
-                              </th>
                               <th class="column-title">STT</th>
                               <th class="column-title">Tên Giảng Viên</th>
                               <th class="column-title">Số Điện Thoại</th>
@@ -188,7 +185,6 @@
                                 @endphp
                                 @foreach ($gv as $gv)
                                   <tr>
-                                    <td><input type="radio"></td>
                                     <td>{{$i}}</td>
                                     <td>{{$gv['TenGiangVien']}}</td>
                                     <td>{{$gv['SDT']}}</td>
@@ -199,6 +195,7 @@
                                         echo $hh[0]['TenHocHam'];
                                       @endphp
                                     </td>
+                                    <td><a href="{{ route('thong-tin-gv', ['id' => $gv['MaGiangVien']]) }}" class="btn btn-primary btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> Xem</a></td>
                                   </tr>
                                   @php
                                     $i++;
