@@ -72,9 +72,13 @@ Route::prefix('xet-duyet-nckh')->middleware('CheckDotKeKhai')->group(function(){
 
 Route::prefix('danh-sach-nckh')->middleware('CheckDotKeKhai')->group(function(){
   Route::get('/', [XetDuyetNCKHController::class, 'listAll'])->name('danh-sach-nckh');
+  Route::post('/', [XetDuyetNCKHController::class, 'listwithMaDot'])->name('danh-sach-nckh-dot');
 });
 
 Route::prefix('quan-ly-giang-vien')->middleware('CheckDotKeKhai')->group(function(){
   Route::get('/', [QuanLyGVController::class, 'list']);
   Route::post('/', [QuanLyGVController::class, 'listwithMaDot'])->name('quan-ly-gv');
+  Route::get('/chi-tiet/{id}', [QuanLyGVController::class, 'chitiet'])->name('thong-tin-gv');
+  Route::post('/chi-tiet/{id}', [QuanLyGVController::class, 'admin_edit'])->name('sua-thong-tin-gv');
 });
+

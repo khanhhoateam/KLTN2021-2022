@@ -35,9 +35,13 @@ class HoSoController extends Controller
             'KetChuyen' => $this->HoSoServices->getKetChuyen($ttgv[0]['MaGiangVien'], $dkk['MaDot'])
         ]);
     }
-    public function edit(HoSoRequest $request){
-        $this->GiangVienServices->edit($request);
-        Session::flash('success', 'Sửa thông tin thành công!');
+    public function edit(Request $request){
+        $query = $this->GiangVienServices->edit($request);
+        if($query){
+            Session::flash('success', 'Cập nhật hồ sơ thành công!');
+        }else{
+            Session::flash('error', 'Cập nhật hồ sơ thất bại!');
+        }
         return redirect()->back();
     }
 }

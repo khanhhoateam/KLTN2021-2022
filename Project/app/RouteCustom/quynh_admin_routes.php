@@ -23,8 +23,8 @@ Route::prefix('quan-ly-ho-so')->group(function(){
 
 Route::prefix('xet-duyet-mien-giam')->middleware('CheckDotKeKhai')->group(function(){
   Route::get('/', [XetDuyetMGController::class, 'list'])->name('xet-duyet-mien-giam');
-  Route::get('/chi-tiet-nckh/{id}', [ChiTietMGController::class, 'show'])->name('chi-tiet-nckh');
-  Route::post('/chi-tiet-nckh/{id}/sua', [ChiTietMGController::class, 'edit'])->name('sua-nckh');
+  Route::get('/chi-tiet-mg/{id}', [ChiTietMGController::class, 'show'])->name('chi-tiet-mg');
+  Route::post('/chi-tiet-mg/{id}/sua', [ChiTietMGController::class, 'edit'])->name('sua-mg');
   Route::get('/duyet-mien-giam/{id}/{value}', [XetDuyetMGController::class, 'approve'])->name('duyet-mien-giam');
 });
 ?>

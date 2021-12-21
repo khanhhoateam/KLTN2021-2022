@@ -21,6 +21,7 @@
         <hr>
         <br>
         <div class="x_content">
+          @include('layouts.alert')
           <div class="col-md-12 col-sm-12">
             <div class="col-md-10 col-sm-10">
               <h2>Chi tiết thành phần tham gia</h3>
@@ -49,6 +50,7 @@
                 </div>
               </form>
           </div> 
+          @if(count($giangvientg)>0)
           <div class="col-md-12 col-sm-12 " style="font-size: medium; margin-top: 30px;">
             <div class="x_panel">
               <div class="x_title">
@@ -102,6 +104,7 @@
               </div>
             </div>
           </div>
+          @endif  
           <br>
           <br/>
           <br/>

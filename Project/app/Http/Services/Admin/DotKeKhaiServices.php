@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin\DotKeKhai;
 use App\Models\Admin\HocHam;
 use App\Models\Admin\MienGiam;
+use App\Models\Admin\HoatDong;
 use App\Models\Admin\TheLoai;
 use App\Models\User\GiangVien;
 
@@ -147,5 +148,11 @@ class DotKeKhaiServices {
 
   public function updateEnable($id){
     return DotKeKhai::where('MaDot', $id)->update(['Enable' => '0']);
+  }
+
+  public static function getDotWithMaHoatDong($id){
+    $theloai  = HoatDong::where('MaHoatDong', $id)->value('MaTheLoai');
+    $madot = TheLoai::where('MaTheLoai',  $theloai)->value('MaDot');
+    return DotKeKhai::where('MaDot', $madot)->get();
   }
 }

@@ -30,6 +30,16 @@ class XetDuyetNCKHController extends Controller
         return view('pages.admin.danhsachnckh.danhsachnckh', [
             'title' => 'DANH SÁCH NCKH',
             'hoatdong' =>$this->XetDuyetNCKHServices->listAll(),
+            'dkk' => $this->DotKeKhaiServices->list(),
+        ]);
+    }
+
+    public function listwithMaDot(Request $request){
+        return view('pages.admin.danhsachnckh.danhsachnckh', [
+            'title' => 'DANH SÁCH NCKH',
+            'hoatdong' =>$this->XetDuyetNCKHServices->listwithMaDot($request->input('dkk')),
+            'dkk' => $this->DotKeKhaiServices->list(),
+            'dkkht' => $this->DotKeKhaiServices->listByID($request->input('dkk')),
         ]);
     }
 
